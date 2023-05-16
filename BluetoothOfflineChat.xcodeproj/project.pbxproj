@@ -13,6 +13,9 @@
 		4B75D3A02A08E154007DCF20 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75D39F2A08E154007DCF20 /* SideMenuModel.swift */; };
 		4B75D3A22A08E16D007DCF20 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75D3A12A08E16D007DCF20 /* SideMenuViewController.swift */; };
 		4BAC618E2A0A31A500A8E37C /* RecentlyDeletedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAC618D2A0A31A500A8E37C /* RecentlyDeletedController.swift */; };
+		4BAC61902A0BB32700A8E37C /* ChatConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAC618F2A0BB32700A8E37C /* ChatConnectivity.swift */; };
+		4BAC61962A0BC60700A8E37C /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAC61952A0BC60700A8E37C /* ChatMessage.swift */; };
+		4BC9C4532A137B2E003FBEB9 /* ChatMessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC9C4522A137B2E003FBEB9 /* ChatMessageHelper.swift */; };
 		4BD580502A03B4570076F86E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5804F2A03B4570076F86E /* AppDelegate.swift */; };
 		4BD580522A03B4570076F86E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD580512A03B4570076F86E /* SceneDelegate.swift */; };
 		4BD580542A03B4570076F86E /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD580532A03B4570076F86E /* ChatsViewController.swift */; };
@@ -38,6 +41,9 @@
 		4B75D39F2A08E154007DCF20 /* SideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		4B75D3A12A08E16D007DCF20 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		4BAC618D2A0A31A500A8E37C /* RecentlyDeletedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyDeletedController.swift; sourceTree = "<group>"; };
+		4BAC618F2A0BB32700A8E37C /* ChatConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConnectivity.swift; sourceTree = "<group>"; };
+		4BAC61952A0BC60700A8E37C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		4BC9C4522A137B2E003FBEB9 /* ChatMessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageHelper.swift; sourceTree = "<group>"; };
 		4BD5804C2A03B4570076F86E /* BluetoothOfflineChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothOfflineChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BD5804F2A03B4570076F86E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BD580512A03B4570076F86E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 			children = (
 				4BD5806E2A03B8DC0076F86E /* BluetoothChatModel.xcdatamodeld */,
 				4BD580732A03C0420076F86E /* Message.swift */,
+				4BAC61952A0BC60700A8E37C /* ChatMessage.swift */,
+				4BC9C4522A137B2E003FBEB9 /* ChatMessageHelper.swift */,
 			);
 			path = ChatModels;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				4BD580862A03C6550076F86E /* Constants.swift */,
+				4BAC618F2A0BB32700A8E37C /* ChatConnectivity.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -250,11 +259,14 @@
 				4B75D3A02A08E154007DCF20 /* SideMenuModel.swift in Sources */,
 				4BD580872A03C6550076F86E /* Constants.swift in Sources */,
 				4BD580652A03B6E60076F86E /* ChatsPreviewController.swift in Sources */,
+				4BAC61902A0BB32700A8E37C /* ChatConnectivity.swift in Sources */,
 				4BD580542A03B4570076F86E /* ChatsViewController.swift in Sources */,
+				4BC9C4532A137B2E003FBEB9 /* ChatMessageHelper.swift in Sources */,
 				4BD580912A05048B0076F86E /* ChildHostingController.swift in Sources */,
 				4B75D39C2A08E0DC007DCF20 /* SideMenuCell.swift in Sources */,
 				4BD580502A03B4570076F86E /* AppDelegate.swift in Sources */,
 				4BD5807C2A03C19A0076F86E /* UIView+Extension.swift in Sources */,
+				4BAC61962A0BC60700A8E37C /* ChatMessage.swift in Sources */,
 				4BD580522A03B4570076F86E /* SceneDelegate.swift in Sources */,
 				4BD580742A03C0420076F86E /* Message.swift in Sources */,
 				4BD580702A03B8DC0076F86E /* BluetoothChatModel.xcdatamodeld in Sources */,
@@ -328,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -382,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

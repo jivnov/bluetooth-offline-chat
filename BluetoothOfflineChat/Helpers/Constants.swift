@@ -13,7 +13,6 @@ struct Constants {
     static let cellIdentifier = "chatPreviewCell"
     static let messageCollCell = "MessageReusableCell"
     static let timeInterval = 0.5
-    static let deleteIcon = "iconDelete"
     
     struct colors {
         static let darkColor = #colorLiteral(red: 0.1642360091, green: 0.1642360091, blue: 0.1642360091, alpha: 1)

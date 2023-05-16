@@ -4,7 +4,7 @@
         <attribute name="chatDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="chatDeleted" optional="YES" attributeType="String"/>
         <attribute name="chatId" optional="YES" attributeType="String"/>
-        <attribute name="chatName" optional="YES" attributeType="String"/>
+        <attribute name="chatPeerId" optional="YES" attributeType="Binary"/>
         <attribute name="chatTime" optional="YES" attributeType="String"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Messages" inverseName="parentCategory" inverseEntity="Messages"/>
     </entity>

@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import Combine
+import MultipeerConnectivity
 
 class ChatsViewController: UIViewController {
     
@@ -28,6 +30,9 @@ class ChatsViewController: UIViewController {
     }
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let chatConnectionManager = (UIApplication.shared.delegate as! AppDelegate).chatConnectionManager
+    
+    private var cancellableBag = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +44,34 @@ class ChatsViewController: UIViewController {
         if let navBar = navigationController?.navigationBar {
             navBar.isHidden = false
         }
-                
+        
+        do {
+            let peerId = try NSKeyedUnarchiver.unarchivedObject(ofClass: MCPeerID.self, from: selectedChat!.chatPeerId!)!
+            self.title = peerId.displayName
+        }
+        catch {
+            print("Failed to set chat name: \(error)")
+        }
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        chatConnectionManager.$newMessage.sink { value in
+            
+            if value != nil {
+                if !self.messages.contains(value!) {
+                    self.messages.append(value!)
+                }
+                DispatchQueue.main.async {
+                    self.chatCollectionView.reloadData()
+                    let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                    self.chatCollectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+                }
+            }
+            
+        }.store(in: &cancellableBag)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +83,7 @@ class ChatsViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.revealViewController()?.gestureEnabled = true
     }
-   
+    
     //MARK: - Textfield above the keyboard
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -72,7 +102,7 @@ class ChatsViewController: UIViewController {
             UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut) {
                 self.view.layoutIfNeeded()
             } completion: { (completed) in }
-
+            
         }
     }
     
@@ -103,47 +133,41 @@ class ChatsViewController: UIViewController {
         }
     }
     
-    private func saveMessages() {
-        do {
-            try context.save()
-            DispatchQueue.main.async {
-                self.chatCollectionView.reloadData()
-            }
-        }
-        catch {
-            print("saveMessages error \(error)")
-        }
-    }
-    
     //MARK: - send button pressed
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         guard let text = messageTextField.text, !text.isEmpty  else {
             return
         }
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let minutesStr = minutes > 10 ? "\(minutes)" : "0\(minutes)"
         
-        let newMessage = Messages(context: context)
-        newMessage.messageBody = messageTextField.text
-        newMessage.sendTime = "\(hour):\(minutesStr)"
-        newMessage.isSender = Bool.random()
-        newMessage.parentCategory = selectedChat
+        let completed = chatConnectionManager.sendMessage(text: messageTextField.text!, chat: selectedChat!)
+        if !completed {
+            showNotCompletedAlert()
+            return
+        }
+        let newMessage = ChatMessageHelper().handleNewMessage(context: context, isSender: true, text: messageTextField.text!, selectedChat: selectedChat, peerData: nil)
         messages.append(newMessage)
-        selectedChat?.chatName = newMessage.messageBody
-        selectedChat?.chatTime = newMessage.sendTime
-        selectedChat?.chatDate = date
-   
-        saveMessages()
         messageTextField.text = ""
         DispatchQueue.main.async {
+            self.chatCollectionView.reloadData()
             let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
             self.chatCollectionView.scrollToItem(at: indexPath, at: .top, animated: true)
             
         }
+    }
+    
+    private func showNotCompletedAlert() {
+        let connectionAlert = UIAlertController(title: "There is no connection with selected chat!", message: "Open settings?", preferredStyle: UIAlertController.Style.alert)
+        
+        connectionAlert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { (action: UIAlertAction!) in
+            self.chatConnectionManager.startConnection()
+        }))
+        
+        connectionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            
+        }))
+        
+        present(connectionAlert, animated: true, completion: nil)
     }
     
     func setSelectedChat(_ chat: ChatPreview?) {
@@ -196,7 +220,7 @@ extension ChatsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let message = messages[indexPath.row]
         return CGSize(width: collectionView.bounds.width - 32, height: countHeightForView(text: message.messageBody!, font: .systemFont(ofSize: 15), width: collectionView.bounds.width - 32))
-
+        
     }
     
     private func countHeightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat{
@@ -205,7 +229,7 @@ extension ChatsViewController: UICollectionViewDataSource, UICollectionViewDeleg
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.font = font
         label.text = text
-
+        
         label.sizeToFit()
         return label.frame.height + 50
     }

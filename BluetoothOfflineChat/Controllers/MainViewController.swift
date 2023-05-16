@@ -18,19 +18,19 @@ class MainViewController: UIViewController {
     private var panBaseLocation: CGFloat = 0.0
     
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
-
+    
     private var revealSideMenuOnTop: Bool = true
     
     private var panGestureRecognizer: UIPanGestureRecognizer!
     
     var gestureEnabled: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         self.setNavBarAppearance(tintColor: .black, barColor: UIColor(#colorLiteral(red: 0.184314, green: 0.184314, blue: 0.184314, alpha: 1)))
-
+        
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
         self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.sideMenuShadowView.backgroundColor = .black
@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
         if self.revealSideMenuOnTop {
             view.insertSubview(self.sideMenuShadowView, at: 1)
         }
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         self.sideMenuViewController = storyboard.instantiateViewController(withIdentifier: "SideMenuID") as? SideMenuViewController
         self.sideMenuViewController.defaultHighlightedCell = 0
@@ -50,10 +50,10 @@ class MainViewController: UIViewController {
         view.insertSubview(self.sideMenuViewController!.view, at: self.revealSideMenuOnTop ? 2 : 0)
         addChild(self.sideMenuViewController!)
         self.sideMenuViewController!.didMove(toParent: self)
-
-
+        
+        
         self.sideMenuViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
+        
         if self.revealSideMenuOnTop {
             self.sideMenuTrailingConstraint = self.sideMenuViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -self.sideMenuRevealWidth - self.paddingForRotation)
             self.sideMenuTrailingConstraint.isActive = true
@@ -63,14 +63,14 @@ class MainViewController: UIViewController {
             self.sideMenuViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             self.sideMenuViewController.view.topAnchor.constraint(equalTo: view.topAnchor)
         ])
-
+        
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         panGestureRecognizer.delegate = self
         view.addGestureRecognizer(panGestureRecognizer)
-
+        
         showViewController(viewController: UINavigationController.self, storyboardId: "ChatsNavID")
     }
-
+    
     func setNavBarAppearance(tintColor: UIColor, barColor: UIColor) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -90,7 +90,7 @@ class MainViewController: UIViewController {
             view.removeGestureRecognizer(panGestureRecognizer)
         }
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate { _ in
@@ -100,17 +100,17 @@ class MainViewController: UIViewController {
             }
         }
     }
-
+    
     func animateShadow(targetPosition: CGFloat) {
         UIView.animate(withDuration: 0.5) {
             self.sideMenuShadowView.alpha = (targetPosition == 0) ? 0.6 : 0.0
         }
     }
-
+    
     @IBAction open func revealSideMenu() {
         self.sideMenuState(expanded: self.isExpanded ? false : true)
     }
-
+    
     func sideMenuState(expanded: Bool) {
         if expanded {
             self.animateSideMenu(targetPosition: self.revealSideMenuOnTop ? 0 : self.sideMenuRevealWidth) { _ in
@@ -137,7 +137,7 @@ class MainViewController: UIViewController {
             }
         }, completion: completion)
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -158,10 +158,10 @@ extension MainViewController: SideMenuViewControllerDelegate {
         default:
             break
         }
-
+        
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
     }
-
+    
     func showViewController<T: UIViewController>(viewController: T.Type, storyboardId: String) -> () {
         for subview in view.subviews {
             if subview.tag == 99 {
@@ -202,7 +202,7 @@ extension MainViewController: UIGestureRecognizerDelegate {
             }
         }
     }
-
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         if (touch.view?.isDescendant(of: self.sideMenuViewController.view))! {
             return false
@@ -213,76 +213,76 @@ extension MainViewController: UIGestureRecognizerDelegate {
     @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
         
         guard gestureEnabled == true else { return }
-
+        
         let position: CGFloat = sender.translation(in: self.view).x
         let velocity: CGFloat = sender.velocity(in: self.view).x
-
+        
         switch sender.state {
-            case .began:
-                if velocity > 0 {
-                    self.isExpanded ? (sender.state = .cancelled) : (self.draggingIsEnabled = true)
+        case .began:
+            if velocity > 0 {
+                self.isExpanded ? (sender.state = .cancelled) : (self.draggingIsEnabled = true)
+            }
+            else if velocity < 0, self.isExpanded {
+                self.draggingIsEnabled = true
+            }
+            
+            if self.draggingIsEnabled {
+                let velocityThreshold: CGFloat = 550
+                if abs(velocity) > velocityThreshold {
+                    self.sideMenuState(expanded: self.isExpanded ? false : true)
+                    self.draggingIsEnabled = false
+                    return
                 }
-                else if velocity < 0, self.isExpanded {
-                    self.draggingIsEnabled = true
-                }
-
-                if self.draggingIsEnabled {
-                    let velocityThreshold: CGFloat = 550
-                    if abs(velocity) > velocityThreshold {
-                        self.sideMenuState(expanded: self.isExpanded ? false : true)
-                        self.draggingIsEnabled = false
-                        return
-                    }
-
-                    if self.revealSideMenuOnTop {
-                        self.panBaseLocation = 0.0
-                        if self.isExpanded {
-                            self.panBaseLocation = self.sideMenuRevealWidth
-                        }
-                    }
-                }
-
-            case .changed:
-                if self.draggingIsEnabled {
-                    if self.revealSideMenuOnTop {
-                        let xLocation: CGFloat = self.panBaseLocation + position
-                        let percentage = (xLocation * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
-
-                        let alpha = percentage >= 0.6 ? 0.6 : percentage
-                        self.sideMenuShadowView.alpha = alpha
-
-                        if xLocation <= self.sideMenuRevealWidth {
-                            self.sideMenuTrailingConstraint.constant = xLocation - self.sideMenuRevealWidth
-                        }
-                    }
-                    else {
-                        if let recogView = sender.view?.subviews[1] {
-                            let percentage = (recogView.frame.origin.x * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
-
-                            let alpha = percentage >= 0.6 ? 0.6 : percentage
-                            self.sideMenuShadowView.alpha = alpha
-
-                            if recogView.frame.origin.x <= self.sideMenuRevealWidth, recogView.frame.origin.x >= 0 {
-                                recogView.frame.origin.x = recogView.frame.origin.x + position
-                                sender.setTranslation(CGPoint.zero, in: view)
-                            }
-                        }
-                    }
-                }
-            case .ended:
-                self.draggingIsEnabled = false
+                
                 if self.revealSideMenuOnTop {
-                    let movedMoreThanHalf = self.sideMenuTrailingConstraint.constant > -(self.sideMenuRevealWidth * 0.5)
-                    self.sideMenuState(expanded: movedMoreThanHalf)
+                    self.panBaseLocation = 0.0
+                    if self.isExpanded {
+                        self.panBaseLocation = self.sideMenuRevealWidth
+                    }
+                }
+            }
+            
+        case .changed:
+            if self.draggingIsEnabled {
+                if self.revealSideMenuOnTop {
+                    let xLocation: CGFloat = self.panBaseLocation + position
+                    let percentage = (xLocation * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
+                    
+                    let alpha = percentage >= 0.6 ? 0.6 : percentage
+                    self.sideMenuShadowView.alpha = alpha
+                    
+                    if xLocation <= self.sideMenuRevealWidth {
+                        self.sideMenuTrailingConstraint.constant = xLocation - self.sideMenuRevealWidth
+                    }
                 }
                 else {
                     if let recogView = sender.view?.subviews[1] {
-                        let movedMoreThanHalf = recogView.frame.origin.x > self.sideMenuRevealWidth * 0.5
-                        self.sideMenuState(expanded: movedMoreThanHalf)
+                        let percentage = (recogView.frame.origin.x * 150 / self.sideMenuRevealWidth) / self.sideMenuRevealWidth
+                        
+                        let alpha = percentage >= 0.6 ? 0.6 : percentage
+                        self.sideMenuShadowView.alpha = alpha
+                        
+                        if recogView.frame.origin.x <= self.sideMenuRevealWidth, recogView.frame.origin.x >= 0 {
+                            recogView.frame.origin.x = recogView.frame.origin.x + position
+                            sender.setTranslation(CGPoint.zero, in: view)
+                        }
                     }
                 }
-            default:
-                break
+            }
+        case .ended:
+            self.draggingIsEnabled = false
+            if self.revealSideMenuOnTop {
+                let movedMoreThanHalf = self.sideMenuTrailingConstraint.constant > -(self.sideMenuRevealWidth * 0.5)
+                self.sideMenuState(expanded: movedMoreThanHalf)
+            }
+            else {
+                if let recogView = sender.view?.subviews[1] {
+                    let movedMoreThanHalf = recogView.frame.origin.x > self.sideMenuRevealWidth * 0.5
+                    self.sideMenuState(expanded: movedMoreThanHalf)
+                }
+            }
+        default:
+            break
         }
     }
 }
