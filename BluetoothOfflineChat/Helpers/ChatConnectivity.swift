@@ -98,6 +98,19 @@ class ChatConnectivity: NSObject, ObservableObject {
     func getConnectedPeers() -> Set<Data> {
         return connectedPeersSet
     }
+    
+    func setNewPeerName(_ name: String) {
+        session?.disconnect()
+        
+        let peerId : MCPeerID = MCPeerID(displayName: name)
+        do {
+            let peerIDData = try NSKeyedArchiver.archivedData(withRootObject: peerId, requiringSecureCoding: false)
+            UserDefaults.standard.set(peerIDData, forKey: "myPeerId")
+        }
+        catch {
+            print("setNewPeerName error \(error)")
+        }
+    }
 }
 
 extension ChatConnectivity: MCNearbyServiceAdvertiserDelegate {

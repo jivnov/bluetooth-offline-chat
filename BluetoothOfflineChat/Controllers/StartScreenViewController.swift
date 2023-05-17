@@ -6,11 +6,24 @@
 //
 
 import UIKit
+import Combine
+import LocalAuthentication
 
 class StartScreenViewController: UIViewController {
     
     @IBOutlet weak var loginButtonOutlet: UIButton!
+    @IBOutlet weak var notCorrectView: UILabel!
+    @IBOutlet weak var passcodeView: UIView!
+    
+    private var passcodeController: PasscodeViewController!
+    private let keychainHelper = KeychainHelper()
+    private let biometricHelper = BiometricHelper()
+    
+    private var cancellableBag = Set<AnyCancellable>()
     private var actionSave: UIAlertAction!
+    
+    private var enteredPasscode: String = ""
+    private var biometricCompleted: Bool = false
     
     override func viewDidLoad() {
         navigationController?.navigationBar.isHidden = true
@@ -32,10 +45,29 @@ class StartScreenViewController: UIViewController {
             self.loginButtonOutlet.transform = .identity
         }, completion: nil)
         
-        //        let userName = UserDefaults.standard.string(forKey: "userName")
-        if UserDefaults.standard.string(forKey: "userName") == nil {
-            alertWithTF()
+        let userName = UserDefaults.standard.string(forKey: "userName")
+        if userName == nil {
+            loginButtonOutlet.isHidden = true
+            showSetNameAlert()
         }
+        
+        if !UserDefaults.standard.bool(forKey: "passwordEnabled") {
+            passcodeView.isHidden = true
+            if userName != nil {
+                loginButtonOutlet.isHidden = true
+                self.performSegue(withIdentifier: "goToChats", sender: self)
+            }
+        }
+        
+        passcodeController.$pressedNumber.sink { value in
+            self.notCorrectView.isHidden = true
+            if value != nil {
+                self.enteredPasscode.append(value!)
+            }
+            
+        }.store(in: &cancellableBag)
+        
+        tryToUseBiometric()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,16 +80,33 @@ class StartScreenViewController: UIViewController {
         
     }
     
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
+    private func tryToUseBiometric() {
+        if !biometricHelper.isBiometricEnabled() {
+            return
+        }
+        let context = LAContext()
+        let reason = "Unlock chat!"
         
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+            success, authenticationError in
+            
+            DispatchQueue.main.async {
+                if success {
+                    self.biometricCompleted = true
+                    self.performSegue(withIdentifier: "goToChats", sender: self)
+                }
+            }
+            
+        }
     }
     
-    func alertWithTF() {
+    func showSetNameAlert() {
         let alert = UIAlertController(title: "Your name", message: "Please input your name, which will be visible for others", preferredStyle: UIAlertController.Style.alert )
         actionSave = UIAlertAction(title: "Save", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if textField.text != "" {
                 UserDefaults.standard.set(textField.text!, forKey: "userName")
+                self.performSegue(withIdentifier: "goToChats", sender: self)
             }
         }
         
@@ -74,6 +123,28 @@ class StartScreenViewController: UIViewController {
     
     @objc private func textFieldDidChange(_ field: UITextField) {
         actionSave.isEnabled = field.text?.count ?? 0 > 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "passcodeSegue") {
+            guard let destinationVC = segue.destination as? PasscodeViewController else { return }
+            passcodeController = destinationVC
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "goToChats" && !authCompleted() && UserDefaults.standard.bool(forKey: "passwordEnabled")  {
+            self.notCorrectView.isHidden = false
+            return false
+        }
+        return true
+    }
+    
+    private func authCompleted() -> Bool {
+        if biometricCompleted {
+            return true
+        }
+        return self.enteredPasscode == self.keychainHelper.getPassword()
     }
     
 }

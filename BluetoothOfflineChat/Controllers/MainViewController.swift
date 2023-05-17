@@ -162,7 +162,7 @@ extension MainViewController: SideMenuViewControllerDelegate {
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
     }
     
-    func showViewController<T: UIViewController>(viewController: T.Type, storyboardId: String) -> () {
+    private func showViewController<T: UIViewController>(viewController: T.Type, storyboardId: String) -> () {
         for subview in view.subviews {
             if subview.tag == 99 {
                 subview.removeFromSuperview()

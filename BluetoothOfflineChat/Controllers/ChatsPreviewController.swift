@@ -140,14 +140,9 @@ class ChatsPreviewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        //        openSwiftUIScreen()
         chatConnectionManager.startConnection()
     }
     
-//    @objc func openSwiftUIScreen() {
-//        let swiftUIViewController = UIHostingController(rootView: MainTabbedView())
-//        self.navigationController?.pushViewController(swiftUIViewController, animated: true)
-//    }
 }
 
 extension ChatsPreviewController: UITableViewDataSource, UITableViewDelegate {
