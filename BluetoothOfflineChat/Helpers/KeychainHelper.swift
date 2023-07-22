@@ -17,7 +17,7 @@ class KeychainHelper {
             kSecValueData as String: password,
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: "BluetoothOfflineChat"
-        ] as CFDictionary
+        ] as [AnyHashable : Any] as CFDictionary
         
         let status = SecItemAdd(query, nil)
         if status != errSecSuccess {
@@ -30,7 +30,7 @@ class KeychainHelper {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: "BluetoothOfflineChat"
-        ] as CFDictionary
+        ] as [CFString : Any] as CFDictionary
         
         let updatedData = [kSecValueData as String: password] as CFDictionary
         
@@ -45,7 +45,7 @@ class KeychainHelper {
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: "BluetoothOfflineChat",
             kSecReturnData: true
-        ] as CFDictionary
+        ] as [CFString : Any] as CFDictionary
         
         var result: AnyObject?
         let status = SecItemCopyMatching(query, &result)
@@ -60,7 +60,7 @@ class KeychainHelper {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: "BluetoothOfflineChat"
-        ] as CFDictionary
+        ] as [CFString : Any] as CFDictionary
         
         let status = SecItemDelete(query)
         if status != errSecSuccess {

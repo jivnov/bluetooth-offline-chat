@@ -92,6 +92,7 @@ class ChatConnectivity: NSObject, ObservableObject {
         
         let mcBrowserViewController = MCBrowserViewController(serviceType: ChatConnectivity.service, session: session)
         mcBrowserViewController.delegate = self
+        mcBrowserViewController.modalPresentationStyle = .fullScreen
         window.rootViewController?.present(mcBrowserViewController, animated: true)
     }
     

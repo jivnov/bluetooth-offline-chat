@@ -21,7 +21,7 @@ class SideMenuViewController: UIViewController {
     var defaultHighlightedCell: Int = 0
     
     var menu: [SideMenuModel] = [
-        SideMenuModel(icon: UIImage(named: "chatsIcon")!, title: "Chats"),
+        SideMenuModel(icon: UIImage(named: "chatsIcon")!.withTintColor(.white), title: "Chats"),
         SideMenuModel(icon: UIImage(named: "iconDelete")!, title: "Recently deleted"),
         SideMenuModel(icon: UIImage(systemName: "slider.horizontal.3")!, title: "Settings"),
         SideMenuModel(icon: UIImage(systemName: "hand.thumbsup.fill")!, title: "My GitHub")
