@@ -1,0 +1,1054 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1445FE162B5C417700DB6ABF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE152B5C417700DB6ABF /* User.swift */; };
+		1445FE192B5C454B00DB6ABF /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE182B5C454B00DB6ABF /* CircularProfileImageView.swift */; };
+		1445FE1C2B5C4A1B00DB6ABF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE1B2B5C4A1B00DB6ABF /* ChatView.swift */; };
+		1445FE1E2B5D1BFA00DB6ABF /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE1D2B5D1BFA00DB6ABF /* ChatMessageCell.swift */; };
+		1445FE202B5D1EA200DB6ABF /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE1F2B5D1EA200DB6ABF /* ChatBubble.swift */; };
+		1445FE222B5D318E00DB6ABF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1445FE212B5D318D00DB6ABF /* GoogleService-Info.plist */; };
+		1445FE252B5D325400DB6ABF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1445FE242B5D325400DB6ABF /* FirebaseAuth */; };
+		1445FE272B5D325400DB6ABF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1445FE262B5D325400DB6ABF /* FirebaseFirestore */; };
+		1445FE292B5D325400DB6ABF /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1445FE282B5D325400DB6ABF /* FirebaseFirestoreSwift */; };
+		1445FE2B2B5D325400DB6ABF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1445FE2A2B5D325400DB6ABF /* FirebaseStorage */; };
+		1445FE2F2B5D547C00DB6ABF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE2E2B5D547C00DB6ABF /* LoginViewModel.swift */; };
+		1445FE312B5D54A500DB6ABF /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE302B5D54A500DB6ABF /* RegistrationViewModel.swift */; };
+		1445FE332B5D54C400DB6ABF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE322B5D54C400DB6ABF /* AuthService.swift */; };
+		1445FE372B5D5D0800DB6ABF /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE362B5D5D0800DB6ABF /* ContentViewModel.swift */; };
+		1445FE392B5D991700DB6ABF /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE382B5D991700DB6ABF /* UserService.swift */; };
+		145EF3D02B5ED8E600B1984B /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3CF2B5ED8E600B1984B /* InboxViewModel.swift */; };
+		145EF3D42B5F1AF200B1984B /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3D32B5F1AF200B1984B /* NewMessageViewModel.swift */; };
+		145EF3D62B6404F500B1984B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3D52B6404F500B1984B /* Message.swift */; };
+		145EF3DC2B64093D00B1984B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3DB2B64093D00B1984B /* ChatViewModel.swift */; };
+		145EF3DF2B64200100B1984B /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3DE2B64200100B1984B /* ChatService.swift */; };
+		145EF3E22B6420F700B1984B /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3E12B6420F700B1984B /* Constans.swift */; };
+		145EF3E52B6430CC00B1984B /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3E42B6430CC00B1984B /* InboxService.swift */; };
+		145EF3E72B644B2600B1984B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3E62B644B2600B1984B /* Date.swift */; };
+		145EF3EB2B64548800B1984B /* ActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3EA2B64548800B1984B /* ActiveNowViewModel.swift */; };
+		145EF3EE2B64579F00B1984B /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3ED2B64579F00B1984B /* Route.swift */; };
+		145EF3F32B64671600B1984B /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145EF3F22B64671600B1984B /* ProfileService.swift */; };
+		1460FA592B6E5D460067B1AB /* ChatConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA582B6E5D460067B1AB /* ChatConnectivity.swift */; };
+		1460FA5C2B6E5D870067B1AB /* AppNetworkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA5B2B6E5D870067B1AB /* AppNetworkMode.swift */; };
+		1460FA5E2B6E7AEB0067B1AB /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA5D2B6E7AEB0067B1AB /* NetworkStateView.swift */; };
+		1460FA602B70C4AB0067B1AB /* AppearanceChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA5F2B70C4AB0067B1AB /* AppearanceChangeView.swift */; };
+		14A3C8E82B4ACFC10025860F /* BluetoothOfflineChatV2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */; };
+		14A3C8EA2B4ACFC10025860F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E92B4ACFC10025860F /* ContentView.swift */; };
+		14A3C8EC2B4ACFC30025860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A3C8EB2B4ACFC30025860F /* Assets.xcassets */; };
+		14A3C8EF2B4ACFC30025860F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A3C8EE2B4ACFC30025860F /* Preview Assets.xcassets */; };
+		14A3C8F92B4ACFC30025860F /* BluetoothOfflineChatV2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8F82B4ACFC30025860F /* BluetoothOfflineChatV2Tests.swift */; };
+		14A3C9032B4ACFC30025860F /* BluetoothOfflineChatV2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9022B4ACFC30025860F /* BluetoothOfflineChatV2UITests.swift */; };
+		14A3C9052B4ACFC30025860F /* BluetoothOfflineChatV2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9042B4ACFC30025860F /* BluetoothOfflineChatV2UITestsLaunchTests.swift */; };
+		14A3C91C2B4AD1360025860F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C91B2B4AD1360025860F /* LoginView.swift */; };
+		14A3C91E2B4AF58B0025860F /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C91D2B4AF58B0025860F /* RegistrationView.swift */; };
+		14A3C9212B4AF7AD0025860F /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9202B4AF7AD0025860F /* InboxView.swift */; };
+		14A3C9242B4AF95C0025860F /* ActiveNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9232B4AF95C0025860F /* ActiveNowView.swift */; };
+		14A3C9262B4AFB8B0025860F /* InboxRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9252B4AFB8B0025860F /* InboxRowView.swift */; };
+		14A3C9292B4B0D2C0025860F /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9282B4B0D2C0025860F /* NewMessageView.swift */; };
+		14A3C92E2B52F1200025860F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C92D2B52F1200025860F /* ProfileView.swift */; };
+		14A3C9302B52F2E90025860F /* SettingsOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C92F2B52F2E90025860F /* SettingsOptionsViewModel.swift */; };
+		14A3C9322B5307660025860F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C9312B5307660025860F /* ProfileViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14A3C8F52B4ACFC30025860F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14A3C8DC2B4ACFC10025860F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14A3C8E32B4ACFC10025860F;
+			remoteInfo = BluetoothOfflineChatV2;
+		};
+		14A3C8FF2B4ACFC30025860F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14A3C8DC2B4ACFC10025860F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14A3C8E32B4ACFC10025860F;
+			remoteInfo = BluetoothOfflineChatV2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1445FE152B5C417700DB6ABF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1445FE182B5C454B00DB6ABF /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		1445FE1B2B5C4A1B00DB6ABF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		1445FE1D2B5D1BFA00DB6ABF /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		1445FE1F2B5D1EA200DB6ABF /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		1445FE212B5D318D00DB6ABF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1445FE2E2B5D547C00DB6ABF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1445FE302B5D54A500DB6ABF /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		1445FE322B5D54C400DB6ABF /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		1445FE362B5D5D0800DB6ABF /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		1445FE382B5D991700DB6ABF /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		145EF3CF2B5ED8E600B1984B /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		145EF3D32B5F1AF200B1984B /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
+		145EF3D52B6404F500B1984B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		145EF3DB2B64093D00B1984B /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		145EF3DE2B64200100B1984B /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		145EF3E12B6420F700B1984B /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		145EF3E42B6430CC00B1984B /* InboxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxService.swift; sourceTree = "<group>"; };
+		145EF3E62B644B2600B1984B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		145EF3EA2B64548800B1984B /* ActiveNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowViewModel.swift; sourceTree = "<group>"; };
+		145EF3ED2B64579F00B1984B /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		145EF3F22B64671600B1984B /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		1460FA582B6E5D460067B1AB /* ChatConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConnectivity.swift; sourceTree = "<group>"; };
+		1460FA5B2B6E5D870067B1AB /* AppNetworkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetworkMode.swift; sourceTree = "<group>"; };
+		1460FA5D2B6E7AEB0067B1AB /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
+		1460FA5F2B70C4AB0067B1AB /* AppearanceChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceChangeView.swift; sourceTree = "<group>"; };
+		14A3C8E42B4ACFC10025860F /* BluetoothOfflineChatV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothOfflineChatV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2App.swift; sourceTree = "<group>"; };
+		14A3C8E92B4ACFC10025860F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		14A3C8EB2B4ACFC30025860F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14A3C8EE2B4ACFC30025860F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		14A3C8F42B4ACFC30025860F /* BluetoothOfflineChatV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothOfflineChatV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A3C8F82B4ACFC30025860F /* BluetoothOfflineChatV2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2Tests.swift; sourceTree = "<group>"; };
+		14A3C8FE2B4ACFC30025860F /* BluetoothOfflineChatV2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluetoothOfflineChatV2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A3C9022B4ACFC30025860F /* BluetoothOfflineChatV2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2UITests.swift; sourceTree = "<group>"; };
+		14A3C9042B4ACFC30025860F /* BluetoothOfflineChatV2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		14A3C91B2B4AD1360025860F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		14A3C91D2B4AF58B0025860F /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		14A3C9202B4AF7AD0025860F /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		14A3C9232B4AF95C0025860F /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
+		14A3C9252B4AFB8B0025860F /* InboxRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxRowView.swift; sourceTree = "<group>"; };
+		14A3C9282B4B0D2C0025860F /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		14A3C92D2B52F1200025860F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		14A3C92F2B52F2E90025860F /* SettingsOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOptionsViewModel.swift; sourceTree = "<group>"; };
+		14A3C9312B5307660025860F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14A3C8E12B4ACFC10025860F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1445FE252B5D325400DB6ABF /* FirebaseAuth in Frameworks */,
+				1445FE2B2B5D325400DB6ABF /* FirebaseStorage in Frameworks */,
+				1445FE272B5D325400DB6ABF /* FirebaseFirestore in Frameworks */,
+				1445FE292B5D325400DB6ABF /* FirebaseFirestoreSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A3C8F12B4ACFC30025860F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A3C8FB2B4ACFC30025860F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1445FE172B5C451B00DB6ABF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE182B5C454B00DB6ABF /* CircularProfileImageView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1445FE1A2B5C4A0900DB6ABF /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3DD2B641FED00B1984B /* ChatService */,
+				145EF3D92B64091F00B1984B /* View */,
+				145EF3DA2B64092300B1984B /* ViewModel */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		1445FE2C2B5D53C500DB6ABF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE322B5D54C400DB6ABF /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1445FE2D2B5D53CD00DB6ABF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE2E2B5D547C00DB6ABF /* LoginViewModel.swift */,
+				1445FE302B5D54A500DB6ABF /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1445FE342B5D5CE700DB6ABF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C8E92B4ACFC10025860F /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1445FE352B5D5CED00DB6ABF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE362B5D5D0800DB6ABF /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		145EF3CD2B5ED8BA00B1984B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3CF2B5ED8E600B1984B /* InboxViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		145EF3CE2B5ED8C700B1984B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C9202B4AF7AD0025860F /* InboxView.swift */,
+				14A3C9252B4AFB8B0025860F /* InboxRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		145EF3D12B5F1AD300B1984B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3D32B5F1AF200B1984B /* NewMessageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		145EF3D22B5F1ADC00B1984B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C9282B4B0D2C0025860F /* NewMessageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		145EF3D92B64091F00B1984B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE1B2B5C4A1B00DB6ABF /* ChatView.swift */,
+				1445FE1D2B5D1BFA00DB6ABF /* ChatMessageCell.swift */,
+				1445FE1F2B5D1EA200DB6ABF /* ChatBubble.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		145EF3DA2B64092300B1984B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3DB2B64093D00B1984B /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		145EF3DD2B641FED00B1984B /* ChatService */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3DE2B64200100B1984B /* ChatService.swift */,
+			);
+			path = ChatService;
+			sourceTree = "<group>";
+		};
+		145EF3E02B6420D600B1984B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1460FA5B2B6E5D870067B1AB /* AppNetworkMode.swift */,
+				145EF3E12B6420F700B1984B /* Constans.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		145EF3E32B6430BF00B1984B /* InboxService */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3E42B6430CC00B1984B /* InboxService.swift */,
+			);
+			path = InboxService;
+			sourceTree = "<group>";
+		};
+		145EF3E82B64546B00B1984B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3EA2B64548800B1984B /* ActiveNowViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		145EF3E92B64547300B1984B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C9232B4AF95C0025860F /* ActiveNowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		145EF3EC2B64578500B1984B /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3ED2B64579F00B1984B /* Route.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		145EF3F12B6466FD00B1984B /* ProfileService */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3F22B64671600B1984B /* ProfileService.swift */,
+			);
+			path = ProfileService;
+			sourceTree = "<group>";
+		};
+		1460FA572B6E5D2A0067B1AB /* OfflineConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				1460FA582B6E5D460067B1AB /* ChatConnectivity.swift */,
+			);
+			path = OfflineConnectivity;
+			sourceTree = "<group>";
+		};
+		14A3C8DB2B4ACFC10025860F = {
+			isa = PBXGroup;
+			children = (
+				14A3C8E62B4ACFC10025860F /* BluetoothOfflineChatV2 */,
+				14A3C8F72B4ACFC30025860F /* BluetoothOfflineChatV2Tests */,
+				14A3C9012B4ACFC30025860F /* BluetoothOfflineChatV2UITests */,
+				14A3C8E52B4ACFC10025860F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14A3C8E52B4ACFC10025860F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C8E42B4ACFC10025860F /* BluetoothOfflineChatV2.app */,
+				14A3C8F42B4ACFC30025860F /* BluetoothOfflineChatV2Tests.xctest */,
+				14A3C8FE2B4ACFC30025860F /* BluetoothOfflineChatV2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14A3C8E62B4ACFC10025860F /* BluetoothOfflineChatV2 */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C9152B4AD04F0025860F /* App */,
+				14A3C9142B4AD04C0025860F /* Core */,
+				14A3C9172B4AD07C0025860F /* Extensions */,
+				14A3C9112B4AD0400025860F /* Model */,
+				145EF3EC2B64578500B1984B /* Routing */,
+				14A3C9162B4AD06F0025860F /* Service */,
+				145EF3E02B6420D600B1984B /* Utils */,
+				14A3C8EB2B4ACFC30025860F /* Assets.xcassets */,
+				1445FE212B5D318D00DB6ABF /* GoogleService-Info.plist */,
+				14A3C8ED2B4ACFC30025860F /* Preview Content */,
+			);
+			path = BluetoothOfflineChatV2;
+			sourceTree = "<group>";
+		};
+		14A3C8ED2B4ACFC30025860F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C8EE2B4ACFC30025860F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		14A3C8F72B4ACFC30025860F /* BluetoothOfflineChatV2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C8F82B4ACFC30025860F /* BluetoothOfflineChatV2Tests.swift */,
+			);
+			path = BluetoothOfflineChatV2Tests;
+			sourceTree = "<group>";
+		};
+		14A3C9012B4ACFC30025860F /* BluetoothOfflineChatV2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C9022B4ACFC30025860F /* BluetoothOfflineChatV2UITests.swift */,
+				14A3C9042B4ACFC30025860F /* BluetoothOfflineChatV2UITestsLaunchTests.swift */,
+			);
+			path = BluetoothOfflineChatV2UITests;
+			sourceTree = "<group>";
+		};
+		14A3C9112B4AD0400025860F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE152B5C417700DB6ABF /* User.swift */,
+				145EF3D52B6404F500B1984B /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14A3C9142B4AD04C0025860F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C9222B4AF9450025860F /* ActiveNow */,
+				14A3C9182B4AD0B50025860F /* Authentication */,
+				1445FE1A2B5C4A0900DB6ABF /* Chat */,
+				1445FE172B5C451B00DB6ABF /* Components */,
+				14A3C91F2B4AF78E0025860F /* Inbox */,
+				14A3C9272B4B0D110025860F /* NewMessage */,
+				1460FA572B6E5D2A0067B1AB /* OfflineConnectivity */,
+				14A3C92A2B52F0E90025860F /* Profile */,
+				14A3C9192B4AD0E70025860F /* Root */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		14A3C9152B4AD04F0025860F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		14A3C9162B4AD06F0025860F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE382B5D991700DB6ABF /* UserService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		14A3C9172B4AD07C0025860F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3E62B644B2600B1984B /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		14A3C9182B4AD0B50025860F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE2C2B5D53C500DB6ABF /* Service */,
+				14A3C91A2B4AD1220025860F /* View */,
+				1445FE2D2B5D53CD00DB6ABF /* ViewModel */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		14A3C9192B4AD0E70025860F /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				1445FE342B5D5CE700DB6ABF /* View */,
+				1445FE352B5D5CED00DB6ABF /* ViewModel */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		14A3C91A2B4AD1220025860F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C91B2B4AD1360025860F /* LoginView.swift */,
+				14A3C91D2B4AF58B0025860F /* RegistrationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14A3C91F2B4AF78E0025860F /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3E32B6430BF00B1984B /* InboxService */,
+				145EF3CE2B5ED8C700B1984B /* View */,
+				145EF3CD2B5ED8BA00B1984B /* ViewModel */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		14A3C9222B4AF9450025860F /* ActiveNow */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3E92B64547300B1984B /* View */,
+				145EF3E82B64546B00B1984B /* ViewModel */,
+			);
+			path = ActiveNow;
+			sourceTree = "<group>";
+		};
+		14A3C9272B4B0D110025860F /* NewMessage */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3D22B5F1ADC00B1984B /* View */,
+				145EF3D12B5F1AD300B1984B /* ViewModel */,
+			);
+			path = NewMessage;
+			sourceTree = "<group>";
+		};
+		14A3C92A2B52F0E90025860F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				145EF3F12B6466FD00B1984B /* ProfileService */,
+				14A3C92C2B52F10F0025860F /* View */,
+				14A3C92B2B52F1010025860F /* ViewModel */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		14A3C92B2B52F1010025860F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C92F2B52F2E90025860F /* SettingsOptionsViewModel.swift */,
+				14A3C9312B5307660025860F /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		14A3C92C2B52F10F0025860F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A3C92D2B52F1200025860F /* ProfileView.swift */,
+				1460FA5D2B6E7AEB0067B1AB /* NetworkStateView.swift */,
+				1460FA5F2B70C4AB0067B1AB /* AppearanceChangeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14A3C8E32B4ACFC10025860F /* BluetoothOfflineChatV2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A3C9082B4ACFC30025860F /* Build configuration list for PBXNativeTarget "BluetoothOfflineChatV2" */;
+			buildPhases = (
+				14A3C8E02B4ACFC10025860F /* Sources */,
+				14A3C8E12B4ACFC10025860F /* Frameworks */,
+				14A3C8E22B4ACFC10025860F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluetoothOfflineChatV2;
+			packageProductDependencies = (
+				1445FE242B5D325400DB6ABF /* FirebaseAuth */,
+				1445FE262B5D325400DB6ABF /* FirebaseFirestore */,
+				1445FE282B5D325400DB6ABF /* FirebaseFirestoreSwift */,
+				1445FE2A2B5D325400DB6ABF /* FirebaseStorage */,
+			);
+			productName = BluetoothOfflineChatV2;
+			productReference = 14A3C8E42B4ACFC10025860F /* BluetoothOfflineChatV2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14A3C8F32B4ACFC30025860F /* BluetoothOfflineChatV2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A3C90B2B4ACFC30025860F /* Build configuration list for PBXNativeTarget "BluetoothOfflineChatV2Tests" */;
+			buildPhases = (
+				14A3C8F02B4ACFC30025860F /* Sources */,
+				14A3C8F12B4ACFC30025860F /* Frameworks */,
+				14A3C8F22B4ACFC30025860F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14A3C8F62B4ACFC30025860F /* PBXTargetDependency */,
+			);
+			name = BluetoothOfflineChatV2Tests;
+			productName = BluetoothOfflineChatV2Tests;
+			productReference = 14A3C8F42B4ACFC30025860F /* BluetoothOfflineChatV2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		14A3C8FD2B4ACFC30025860F /* BluetoothOfflineChatV2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A3C90E2B4ACFC30025860F /* Build configuration list for PBXNativeTarget "BluetoothOfflineChatV2UITests" */;
+			buildPhases = (
+				14A3C8FA2B4ACFC30025860F /* Sources */,
+				14A3C8FB2B4ACFC30025860F /* Frameworks */,
+				14A3C8FC2B4ACFC30025860F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14A3C9002B4ACFC30025860F /* PBXTargetDependency */,
+			);
+			name = BluetoothOfflineChatV2UITests;
+			productName = BluetoothOfflineChatV2UITests;
+			productReference = 14A3C8FE2B4ACFC30025860F /* BluetoothOfflineChatV2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14A3C8DC2B4ACFC10025860F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					14A3C8E32B4ACFC10025860F = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					14A3C8F32B4ACFC30025860F = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 14A3C8E32B4ACFC10025860F;
+					};
+					14A3C8FD2B4ACFC30025860F = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 14A3C8E32B4ACFC10025860F;
+					};
+				};
+			};
+			buildConfigurationList = 14A3C8DF2B4ACFC10025860F /* Build configuration list for PBXProject "BluetoothOfflineChatV2" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14A3C8DB2B4ACFC10025860F;
+			packageReferences = (
+				1445FE232B5D325400DB6ABF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 14A3C8E52B4ACFC10025860F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14A3C8E32B4ACFC10025860F /* BluetoothOfflineChatV2 */,
+				14A3C8F32B4ACFC30025860F /* BluetoothOfflineChatV2Tests */,
+				14A3C8FD2B4ACFC30025860F /* BluetoothOfflineChatV2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14A3C8E22B4ACFC10025860F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A3C8EF2B4ACFC30025860F /* Preview Assets.xcassets in Resources */,
+				14A3C8EC2B4ACFC30025860F /* Assets.xcassets in Resources */,
+				1445FE222B5D318E00DB6ABF /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A3C8F22B4ACFC30025860F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A3C8FC2B4ACFC30025860F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14A3C8E02B4ACFC10025860F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				145EF3DC2B64093D00B1984B /* ChatViewModel.swift in Sources */,
+				145EF3E72B644B2600B1984B /* Date.swift in Sources */,
+				14A3C9262B4AFB8B0025860F /* InboxRowView.swift in Sources */,
+				145EF3D02B5ED8E600B1984B /* InboxViewModel.swift in Sources */,
+				1445FE312B5D54A500DB6ABF /* RegistrationViewModel.swift in Sources */,
+				14A3C92E2B52F1200025860F /* ProfileView.swift in Sources */,
+				14A3C9292B4B0D2C0025860F /* NewMessageView.swift in Sources */,
+				145EF3F32B64671600B1984B /* ProfileService.swift in Sources */,
+				1445FE372B5D5D0800DB6ABF /* ContentViewModel.swift in Sources */,
+				14A3C91C2B4AD1360025860F /* LoginView.swift in Sources */,
+				1445FE1C2B5C4A1B00DB6ABF /* ChatView.swift in Sources */,
+				1445FE332B5D54C400DB6ABF /* AuthService.swift in Sources */,
+				14A3C8EA2B4ACFC10025860F /* ContentView.swift in Sources */,
+				145EF3E52B6430CC00B1984B /* InboxService.swift in Sources */,
+				1460FA602B70C4AB0067B1AB /* AppearanceChangeView.swift in Sources */,
+				1445FE1E2B5D1BFA00DB6ABF /* ChatMessageCell.swift in Sources */,
+				1460FA5C2B6E5D870067B1AB /* AppNetworkMode.swift in Sources */,
+				1445FE202B5D1EA200DB6ABF /* ChatBubble.swift in Sources */,
+				1445FE192B5C454B00DB6ABF /* CircularProfileImageView.swift in Sources */,
+				145EF3DF2B64200100B1984B /* ChatService.swift in Sources */,
+				14A3C9212B4AF7AD0025860F /* InboxView.swift in Sources */,
+				1445FE2F2B5D547C00DB6ABF /* LoginViewModel.swift in Sources */,
+				145EF3D42B5F1AF200B1984B /* NewMessageViewModel.swift in Sources */,
+				1445FE392B5D991700DB6ABF /* UserService.swift in Sources */,
+				1460FA5E2B6E7AEB0067B1AB /* NetworkStateView.swift in Sources */,
+				1460FA592B6E5D460067B1AB /* ChatConnectivity.swift in Sources */,
+				145EF3EE2B64579F00B1984B /* Route.swift in Sources */,
+				14A3C9242B4AF95C0025860F /* ActiveNowView.swift in Sources */,
+				14A3C9322B5307660025860F /* ProfileViewModel.swift in Sources */,
+				1445FE162B5C417700DB6ABF /* User.swift in Sources */,
+				14A3C8E82B4ACFC10025860F /* BluetoothOfflineChatV2App.swift in Sources */,
+				145EF3D62B6404F500B1984B /* Message.swift in Sources */,
+				145EF3EB2B64548800B1984B /* ActiveNowViewModel.swift in Sources */,
+				14A3C9302B52F2E90025860F /* SettingsOptionsViewModel.swift in Sources */,
+				145EF3E22B6420F700B1984B /* Constans.swift in Sources */,
+				14A3C91E2B4AF58B0025860F /* RegistrationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A3C8F02B4ACFC30025860F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A3C8F92B4ACFC30025860F /* BluetoothOfflineChatV2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14A3C8FA2B4ACFC30025860F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14A3C9032B4ACFC30025860F /* BluetoothOfflineChatV2UITests.swift in Sources */,
+				14A3C9052B4ACFC30025860F /* BluetoothOfflineChatV2UITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14A3C8F62B4ACFC30025860F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14A3C8E32B4ACFC10025860F /* BluetoothOfflineChatV2 */;
+			targetProxy = 14A3C8F52B4ACFC30025860F /* PBXContainerItemProxy */;
+		};
+		14A3C9002B4ACFC30025860F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14A3C8E32B4ACFC10025860F /* BluetoothOfflineChatV2 */;
+			targetProxy = 14A3C8FF2B4ACFC30025860F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		14A3C9062B4ACFC30025860F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		14A3C9072B4ACFC30025860F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14A3C9092B4ACFC30025860F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BluetoothOfflineChatV2/Preview Content\"";
+				DEVELOPMENT_TEAM = KDC4HBM422;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Exchange data with nearby devices running the offline chat mode.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jivnov.BluetoothOfflineChatV2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14A3C90A2B4ACFC30025860F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BluetoothOfflineChatV2/Preview Content\"";
+				DEVELOPMENT_TEAM = KDC4HBM422;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Exchange data with nearby devices running the offline chat mode.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jivnov.BluetoothOfflineChatV2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		14A3C90C2B4ACFC30025860F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jivnov.BluetoothOfflineChatV2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluetoothOfflineChatV2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BluetoothOfflineChatV2";
+			};
+			name = Debug;
+		};
+		14A3C90D2B4ACFC30025860F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jivnov.BluetoothOfflineChatV2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluetoothOfflineChatV2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BluetoothOfflineChatV2";
+			};
+			name = Release;
+		};
+		14A3C90F2B4ACFC30025860F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jivnov.BluetoothOfflineChatV2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BluetoothOfflineChatV2;
+			};
+			name = Debug;
+		};
+		14A3C9102B4ACFC30025860F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jivnov.BluetoothOfflineChatV2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BluetoothOfflineChatV2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14A3C8DF2B4ACFC10025860F /* Build configuration list for PBXProject "BluetoothOfflineChatV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A3C9062B4ACFC30025860F /* Debug */,
+				14A3C9072B4ACFC30025860F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14A3C9082B4ACFC30025860F /* Build configuration list for PBXNativeTarget "BluetoothOfflineChatV2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A3C9092B4ACFC30025860F /* Debug */,
+				14A3C90A2B4ACFC30025860F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14A3C90B2B4ACFC30025860F /* Build configuration list for PBXNativeTarget "BluetoothOfflineChatV2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A3C90C2B4ACFC30025860F /* Debug */,
+				14A3C90D2B4ACFC30025860F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14A3C90E2B4ACFC30025860F /* Build configuration list for PBXNativeTarget "BluetoothOfflineChatV2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14A3C90F2B4ACFC30025860F /* Debug */,
+				14A3C9102B4ACFC30025860F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1445FE232B5D325400DB6ABF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1445FE242B5D325400DB6ABF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1445FE232B5D325400DB6ABF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		1445FE262B5D325400DB6ABF /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1445FE232B5D325400DB6ABF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		1445FE282B5D325400DB6ABF /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1445FE232B5D325400DB6ABF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		1445FE2A2B5D325400DB6ABF /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1445FE232B5D325400DB6ABF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 14A3C8DC2B4ACFC10025860F /* Project object */;
+}
