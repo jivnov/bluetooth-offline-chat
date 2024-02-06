@@ -12,6 +12,7 @@ struct NewMessageView: View {
     @StateObject private var viewModel = NewMessageViewModel()
     @Binding var selectedUser: User?
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationStack {
@@ -19,7 +20,7 @@ struct NewMessageView: View {
                 TextField("To: ", text: $searchText)
                     .frame(height: 44)
                     .padding(.leading)
-                    .background(Color(.systemGroupedBackground))
+                    .background(Color(.systemGray6))
                 
                 Text("Contacts")
                     .foregroundStyle(.gray)
@@ -63,7 +64,7 @@ struct NewMessageView: View {
                     Button("Cancel") {
                         dismiss()
                     }
-                    .foregroundStyle(.black)
+                    .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                 }
         }
         }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ChatMessageCell: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let message: Message
     
     private var isFromCurrentUser: Bool {
@@ -22,7 +24,8 @@ struct ChatMessageCell: View {
                 Text(message.messageText)
                     .font(.subheadline)
                     .padding(12)
-                    .background(Color(.systemBlue))
+//                    .background(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
+                    .background(ColorConstans.appDarkBlueColor) // TODO: dark is better
                     .foregroundStyle(.white)
                     .clipShape(ChatBubble(isFromCurrentUser: isFromCurrentUser))
                     .frame(maxWidth: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
@@ -33,8 +36,8 @@ struct ChatMessageCell: View {
                     Text(message.messageText)
                         .font(.subheadline)
                         .padding(12)
-                        .background(Color(.systemGray5))
-                        .foregroundStyle(.black)
+                        .background(ColorConstans.getAppPrimalyGrayColor(darkMode: colorScheme == .dark))
+//                        .foregroundStyle(.black) // TODO: Probably without it
                         .clipShape(ChatBubble(isFromCurrentUser: isFromCurrentUser))
                         .frame(maxWidth: UIScreen.main.bounds.width / 1.75, alignment: .leading)
                     

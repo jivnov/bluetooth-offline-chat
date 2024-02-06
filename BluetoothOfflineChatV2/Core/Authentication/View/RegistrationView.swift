@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     @StateObject var viewModel = RegistrationViewModel()
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     private var isIpad : Bool { UIDevice.current.userInterfaceIdiom == .pad }
     private var fieldsWidth : Double {
@@ -33,8 +34,8 @@ struct RegistrationView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 20, height: 20)
-//                        .foregroundStyle(Color(red: 10/255, green: 61/255, blue: 145/255))
                         .padding(.horizontal, 10)
+                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                     
                     TextField("Enter your name", text: $viewModel.fullName)
                         .autocapitalization(.words)
@@ -52,6 +53,7 @@ struct RegistrationView: View {
                         .scaledToFit()
                         .frame(width: 20, height: 20)
                         .padding(.horizontal, 10)
+                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                     
                     TextField("Enter your email", text: $viewModel.email)
                         .autocapitalization(.none)
@@ -70,6 +72,7 @@ struct RegistrationView: View {
                         .scaledToFit()
                         .frame(width: 20, height: 20)
                         .padding(.horizontal, 10)
+                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                     
                     SecureField("Enter your password", text: $viewModel.password)
                         .font(.subheadline)
@@ -89,7 +92,7 @@ struct RegistrationView: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
                     .frame(width: 180, height: 44)
-                    .background(Color(red: 10/255, green: 61/255, blue: 145/255))
+                    .background(ColorConstans.appDarkBlueColor)
                     .cornerRadius(16)
             }
             .padding(.vertical)
@@ -108,7 +111,7 @@ struct RegistrationView: View {
                         .fontWeight(.semibold)
                 }
                 .font(.subheadline)
-                .foregroundStyle(Color(red: 103/255, green: 179/255, blue: 249/255))
+                .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                 
             }
             .padding(.vertical)

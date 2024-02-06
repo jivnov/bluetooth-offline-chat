@@ -8,8 +8,6 @@
 import Foundation
 import MultipeerConnectivity
 
-import Firebase
-
 class ChatConnectivity: NSObject, ObservableObject {
     static let shared = ChatConnectivity()
     

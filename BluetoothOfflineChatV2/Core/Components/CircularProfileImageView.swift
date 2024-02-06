@@ -34,6 +34,7 @@ enum ProfileImageSize {
 }
 
 struct CircularProfileImageView: View {
+    @Environment(\.colorScheme) var colorScheme
     let user: User?
     let size: ProfileImageSize
     
@@ -44,7 +45,7 @@ struct CircularProfileImageView: View {
                 case .empty:
                     ProgressView()
                         .frame(width: size.dimension, height: size.dimension)
-                        .foregroundStyle(Color(.systemGray4))
+                        .foregroundStyle(ColorConstans.getAppPrimalyGrayColor(darkMode: colorScheme == .dark, baseColor: .systemGray4))
                 case .success(let image):
                     image
                         .resizable()
@@ -64,7 +65,7 @@ struct CircularProfileImageView: View {
         return Image(systemName: "person.circle.fill")
             .resizable()
             .frame(width: size.dimension, height: size.dimension)
-            .foregroundStyle(Color(.systemGray4))
+            .foregroundStyle(ColorConstans.getAppPrimalyGrayColor(darkMode: colorScheme == .dark, baseColor: .systemGray4))
     }
 }
 

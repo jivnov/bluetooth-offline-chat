@@ -19,10 +19,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct BluetoothOfflineChatV2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @AppStorage("appearance_scheme") var scheme = ColorSchemeMode.system.rawValue
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.getColorScheme(with: scheme))
         }
     }
 }

@@ -8,33 +8,26 @@
 import SwiftUI
 
 struct AppearanceChangeView: View {
-    @State var colorScheme = ToggleState.on.rawValue
+    @AppStorage("appearance_scheme") var scheme = ColorSchemeMode.system.rawValue
     let option = SettingsOptionsViewModel.darkMode
-    
-    enum ToggleState: String, CaseIterable {
-        case off = "Off"
-        case on = "On"
-        case system = "System"
-    }
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack {
             Image(systemName: option.imageName)
                 .resizable()
                 .frame(width: 24, height: 24)
-                .foregroundStyle(option.imageBackgroundColor)
+                .foregroundStyle(colorScheme == .dark ? .white : option.imageBackgroundColor)
             
             Text(option.title)
                 .font(.subheadline)
             
             Spacer()
-            Menu(colorScheme) {
-                Button(ToggleState.on.rawValue) { colorScheme = ToggleState.on.rawValue }
-                Button(ToggleState.off.rawValue) { colorScheme = ToggleState.off.rawValue }
-                Button(ToggleState.system.rawValue) { colorScheme = ToggleState.system.rawValue }
-            }
-//                                .buttonStyle(.borderedProminent)
-            
+            Menu(scheme) {
+                Button(ColorSchemeMode.on.rawValue) { scheme = ColorSchemeMode.on.rawValue }
+                Button(ColorSchemeMode.off.rawValue) { scheme = ColorSchemeMode.off.rawValue }
+                Button(ColorSchemeMode.system.rawValue) { scheme = ColorSchemeMode.system.rawValue }
+            }            
         }
     }
 }

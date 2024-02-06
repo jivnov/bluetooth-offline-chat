@@ -9,7 +9,6 @@ import SwiftUI
 
 enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
     case darkMode
-    case activeStatus
     case offlineMode
     case privacy
     case notifications
@@ -18,12 +17,10 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
         switch self {
         case .darkMode:
             return "Dark mode"
-        case .activeStatus:
-            return "Active status"
         case .offlineMode:
-            return "Offline Mode"
+            return "Offline mode"
         case .privacy:
-            return "Privacy and Safety"
+            return "Security"
         case .notifications:
             return "Notifications"
         }
@@ -33,8 +30,6 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
         switch self {
         case .darkMode:
             return "moon.circle.fill"
-        case .activeStatus:
-            return "message.badge.circle.fill"
         case .offlineMode:
             return "network.slash"
         case .privacy:
@@ -48,8 +43,6 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
         switch self {
         case .darkMode:
             return .black
-        case .activeStatus:
-            return Color(.systemGreen)
         case .offlineMode:
             return .black
         case .privacy:

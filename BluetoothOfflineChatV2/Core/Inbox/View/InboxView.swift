@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InboxView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var showNewMessageView = false
     @StateObject var viewModel = InboxViewModel()
     @State private var selectedUser: User?
@@ -86,11 +87,11 @@ struct InboxView: View {
                         Image(systemName: "square.and.pencil.circle.fill")
                             .resizable()
                             .frame(width: 32, height: 32)
-                            .foregroundStyle(.black, Color(.systemGray5))
+                            .foregroundStyle(.black, ColorConstans.getAppPrimalyGrayColor(darkMode: colorScheme == .dark)) 
                     }
                 }
             }
-        }
+        }.accentColor(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
     }
 }
 

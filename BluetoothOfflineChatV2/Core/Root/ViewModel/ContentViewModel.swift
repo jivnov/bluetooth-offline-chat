@@ -20,6 +20,7 @@ class ContentViewModel: ObservableObject {
         AuthService.shared.$userSession.sink { [weak self] userSessionFromAuthService in
             guard let strongSelf = self else {return}
             strongSelf.userSession = userSessionFromAuthService
+            if userSessionFromAuthService == nil {UserDefaults.standard.set(ColorSchemeMode.system.rawValue, forKey: "appearance_scheme")}
         }.store(in: &cancellables)
     }
 }

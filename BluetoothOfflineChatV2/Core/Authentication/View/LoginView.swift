@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewModel()
+    @Environment(\.colorScheme) var colorScheme
     private var isIpad : Bool { UIDevice.current.userInterfaceIdiom == .pad }
     private var fieldsWidth : Double {
         isIpad ? (UIScreen.main.bounds.width / 2) : UIScreen.main.bounds.width
@@ -33,6 +34,7 @@ struct LoginView: View {
                             .scaledToFit()
                             .frame(width: 20, height: 20)
                             .padding(.horizontal, 10)
+                            .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                         
                         TextField("Enter your email", text: $viewModel.email)
                             .autocapitalization(.none)
@@ -51,6 +53,7 @@ struct LoginView: View {
                             .scaledToFit()
                             .frame(width: 20, height: 20)
                             .padding(.horizontal, 10)
+                            .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                         
                         SecureField("Enter your password", text: $viewModel.password)
                             .font(.subheadline)
@@ -65,12 +68,13 @@ struct LoginView: View {
                 Button {
                     print("Forgot password")
                 } label: {
-                    Text("Forgot password")
+                    Text("Forgot password?")
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .padding(.top)
                         .padding(.trailing, 28)
                 }
+                .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
                 .frame(maxWidth: fieldsWidth, alignment: .trailing)
                 
                 Button {
@@ -81,8 +85,7 @@ struct LoginView: View {
                         .fontWeight(.semibold)
                         .foregroundStyle(.white)
                         .frame(width: 180, height: 44)
-//                        .background(Color(.systemBlue))
-                        .background(Color(red: 10/255, green: 61/255, blue: 145/255))
+                        .background(ColorConstans.appDarkBlueColor)
                         .cornerRadius(16)
                 }
                 .padding(.vertical)
@@ -99,18 +102,6 @@ struct LoginView: View {
                         .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
                 }
                 .foregroundStyle(.gray)
-                
-//                HStack {
-//                    Image("")
-//                        .resizable()
-//                        .frame(width: 20, height: 20)
-//                    
-//                    Text("Continue with Google")
-//                        .font(.footnote)
-//                        .fontWeight(.semibold)
-//                        .foregroundStyle(Color(.systemBlue))
-//                }
-//                .padding(.top, 8)
                 
                 Button {
                     
@@ -140,6 +131,7 @@ struct LoginView: View {
                     }
                     .font(.footnote)
                 }
+                .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
             }
         }
     }
