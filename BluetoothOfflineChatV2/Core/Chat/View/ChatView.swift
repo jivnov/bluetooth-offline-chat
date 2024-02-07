@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @StateObject var viewModel: ChatViewModel
+    @Environment(\.colorScheme) var colorScheme
     let user: User
     
     init(user: User) {
@@ -45,7 +46,7 @@ struct ChatView: View {
                 TextField("Message...", text: $viewModel.messageText, axis: .vertical)
                     .padding(12)
                     .padding(.trailing, 48)
-                    .background(Color(.systemGroupedBackground))
+                    .background(Color(.systemGray6))
                     .clipShape(Capsule())
                     .font(.subheadline)
                 
@@ -53,8 +54,9 @@ struct ChatView: View {
                     viewModel.sendMessage()
                     viewModel.messageText = ""
                 } label: {
-                    Text("Send")
-                        .fontWeight(.semibold)
+                    Image(systemName: "arrow.up.circle.fill")
+                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
+                        .imageScale(.large)
                 }
                 .padding(.horizontal)
                 .disabled(viewModel.messageText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? true : false)
@@ -66,7 +68,7 @@ struct ChatView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                CircularProfileImageView(user: user, size: .xSmall)
+                CircularUserImageView(user: user, size: .xSmall)
             }
         }
     }

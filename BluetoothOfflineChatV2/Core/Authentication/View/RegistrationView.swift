@@ -28,94 +28,91 @@ struct RegistrationView: View {
                 .frame(width: 150, height: 150)
                 .padding()
             
-            VStack {
-                HStack {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .padding(.horizontal, 10)
-                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
-                    
-                    TextField("Enter your name", text: $viewModel.fullName)
-                        .autocapitalization(.words)
-                        .font(.subheadline)
-                        .padding(12)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .padding(.trailing, 24)
-                }
-                .frame(width: fieldsWidth )
-                
-                HStack {
-                    Image(systemName: "envelope.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .padding(.horizontal, 10)
-                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
-                    
-                    TextField("Enter your email", text: $viewModel.email)
-                        .autocapitalization(.none)
-                        .keyboardType(.emailAddress)
-                        .font(.subheadline)
-                        .padding(12)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .padding(.trailing, 24)
-                }
-                .frame(width: fieldsWidth )
-                
-                HStack {
-                    Image(systemName: "lock.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .padding(.horizontal, 10)
-                        .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
-                    
-                    SecureField("Enter your password", text: $viewModel.password)
-                        .font(.subheadline)
-                        .padding(12)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .padding(.trailing, 24)
-                }
-                .frame(width: fieldsWidth )
-            }
+            registrationTextFields
             
-            Button {
-                Task { try await viewModel.createUser() }
-            } label: {
-                Text("Sign Up")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.white)
-                    .frame(width: 180, height: 44)
-                    .background(ColorConstans.appDarkBlueColor)
-                    .cornerRadius(16)
-            }
-            .padding(.vertical)
+            signUpButton
             
             Spacer()
             
             Divider()
             
-            Button {
-                dismiss()
-            } label: {
-                HStack(spacing: 3) {
-                    Text("Already have an account?")
-                    
-                    Text("Sign In")
-                        .fontWeight(.semibold)
-                }
-                .font(.subheadline)
-                .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
-                
-            }
-            .padding(.vertical)
+            backToLoginButton
         }
+    }
+    
+    private var registrationTextFields: some View {
+        VStack {
+            HStack {
+                AuthenticationImageView(imageName: "person.circle", darkModeEnabled: colorScheme == .dark)
+                
+                TextField("Enter your name", text: $viewModel.fullName)
+                    .autocapitalization(.words)
+                    .font(.subheadline)
+                    .padding(12)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    .padding(.trailing, 24)
+            }
+            .frame(width: fieldsWidth )
+            
+            HStack {
+                AuthenticationImageView(imageName: "envelope.circle", darkModeEnabled: colorScheme == .dark)
+                
+                TextField("Enter your email", text: $viewModel.email)
+                    .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
+                    .font(.subheadline)
+                    .padding(12)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    .padding(.trailing, 24)
+            }
+            .frame(width: fieldsWidth )
+            
+            HStack {
+                AuthenticationImageView(imageName: "lock.circle", darkModeEnabled: colorScheme == .dark)
+                
+                SecureField("Enter your password", text: $viewModel.password)
+                    .font(.subheadline)
+                    .padding(12)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(10)
+                    .padding(.trailing, 24)
+            }
+            .frame(width: fieldsWidth )
+        }
+    }
+    
+    private var signUpButton: some View {
+        Button {
+            Task { try await viewModel.createUser() }
+        } label: {
+            Text("Sign Up")
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+                .frame(width: 180, height: 44)
+                .background(ColorConstans.appDarkBlueColor)
+                .cornerRadius(16)
+        }
+        .padding(.vertical)
+    }
+    
+    private var backToLoginButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            HStack(spacing: 3) {
+                Text("Already have an account?")
+                
+                Text("Sign In")
+                    .fontWeight(.semibold)
+            }
+            .font(.subheadline)
+            .foregroundStyle(ColorConstans.getAppPrimalyBlueColor(darkMode: colorScheme == .dark))
+            
+        }
+        .padding(.vertical)
     }
 }
 

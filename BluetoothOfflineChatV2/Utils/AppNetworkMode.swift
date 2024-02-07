@@ -20,25 +20,25 @@ enum AppNetworkMode {
         return UserDefaults.standard.bool(forKey: "offline_mode_enabled")
     }
     
-    static func setAppMode(_ mode: AppNetworkMode) {
+    static func changeNetworkState(isOn: Bool) {
+        if isOn {
+            setAppMode(.offline)
+            Firestore.firestore().disableNetwork()
+            ChatConnectivity.shared.startConnectivity()
+        }
+        else {
+            setAppMode(.online)
+            Firestore.firestore().enableNetwork()
+            ChatConnectivity.shared.stopConnectivity()
+        }
+    }
+    
+    private static func setAppMode(_ mode: AppNetworkMode) {
         switch mode {
         case .online:
             UserDefaults.standard.set(false, forKey: "offline_mode_enabled")
         case .offline:
             UserDefaults.standard.set(true, forKey: "offline_mode_enabled")
-        }
-    }
-    
-    static func changeNetworkState(isOn: Bool) {
-        if isOn {
-            AppNetworkMode.setAppMode(.offline)
-            Firestore.firestore().disableNetwork()
-            ChatConnectivity.shared.startConnectivity()
-        }
-        else {
-            AppNetworkMode.setAppMode(.online)
-            Firestore.firestore().enableNetwork()
-            ChatConnectivity.shared.stopConnectivity()
         }
     }
 }

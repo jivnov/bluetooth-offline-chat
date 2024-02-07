@@ -17,7 +17,7 @@ struct ActiveNowView: View {
                     NavigationLink(value: Route.chatView(user)) {
                         VStack {
                             ZStack(alignment: .bottomTrailing) {
-                                CircularProfileImageView(user: user, size: .medium)
+                                CircularUserImageView(user: user, size: .medium)
                                 
                                 ZStack {
                                     Circle()

@@ -33,4 +33,11 @@ struct Message: Identifiable, Codable, Hashable {
     var timestampString: String {
         return timestamp.dateValue().timestampString()
     }
+    
+    var encodedToSendOffline: [String: String] {
+        let stringTime = timestamp.dateValue().timestampDateToString()
+        return ["messageId": id,
+              "messageText": messageText,
+              "timestamp": stringTime]
+    }
 }

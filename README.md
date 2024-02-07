@@ -10,9 +10,9 @@ Bluetooth Chat is an iOS app that allows users to engage in chat conversations u
 ## Tech details
 
 - Fully SwiftUI
-- Utilizes the Firebase or Multipeer Connectivity framework to establish direct connections between devices, enabling real-time chat.
+- Utilizes the Firebase and Multipeer Connectivity framework to establish direct connections between devices, enabling real-time chat.
 - Uses Firestore to store and manage chat messages within a local database.
-- The Combine framework is employed to enable instant updates to the message history.
+- The Combine framework is used to enable instant updates of the message history.
 - Enhances security by storing passwords using the Keychain.
 - Implements Local Authentication to leverage biometric login for enhanced user convenience and security.
 
@@ -20,7 +20,7 @@ Bluetooth Chat is an iOS app that allows users to engage in chat conversations u
 
 - Clone this repository.
 - Open the project in Xcode.
-- Run the app on a physical device or simulator running iOS 15 or higher.
+- Run the app on a physical device or simulator running iOS 16 or higher.
 
 ## Usage
 

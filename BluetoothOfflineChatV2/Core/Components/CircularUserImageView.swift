@@ -1,5 +1,5 @@
 //
-//  CircularProfileImageView.swift
+//  CircularUserImageView.swift
 //  BluetoothOfflineChatV2
 //
 //  Created by jivnov on 20/01/2024.
@@ -33,7 +33,7 @@ enum ProfileImageSize {
     }
 }
 
-struct CircularProfileImageView: View {
+struct CircularUserImageView: View {
     @Environment(\.colorScheme) var colorScheme
     let user: User?
     let size: ProfileImageSize
@@ -53,22 +53,52 @@ struct CircularProfileImageView: View {
                         .frame(width: size.dimension, height: size.dimension)
                         .clipShape(Circle())
                 default:
-                    getEmptyProfileImage()
+                    if user != nil {
+                        getCharProfileImage
+                    }
+                    else {
+                        getEmptyProfileImage
+                    }
+
                 }
             }
         } else {
-            getEmptyProfileImage()
+            if user != nil {
+                getCharProfileImage
+            }
+            else {
+                getEmptyProfileImage
+            }
+
         }
     }
     
-    private func getEmptyProfileImage() -> some View {
+    private var getCharProfileImage: some View {
+        let color = RandomUserPhotoHelper.randomColor()
+        let textColor: Color = RandomUserPhotoHelper.isLight(color: color) ? .black : .white
+        return Image(systemName: "circle")
+            .resizable()
+            .frame(width: size.dimension, height: size.dimension)
+            .foregroundStyle(color)
+            .overlay(
+                Text(user!.initialsFromName)
+                    .foregroundStyle(textColor)
+                    .font(Font.custom("Sans Serif", size: size.dimension/3)),
+                alignment: .center
+            )
+            .background(color)
+            .clipShape(Circle())
+    }
+    
+    private var getEmptyProfileImage: some View {
+        let color = RandomUserPhotoHelper.randomColor()
         return Image(systemName: "person.circle.fill")
             .resizable()
             .frame(width: size.dimension, height: size.dimension)
-            .foregroundStyle(ColorConstans.getAppPrimalyGrayColor(darkMode: colorScheme == .dark, baseColor: .systemGray4))
+            .foregroundStyle(color)
     }
 }
 
 #Preview {
-    CircularProfileImageView(user: User.MOCK_USER, size: .medium)
+    CircularUserImageView(user: User.MOCK_USER, size: .medium)
 }

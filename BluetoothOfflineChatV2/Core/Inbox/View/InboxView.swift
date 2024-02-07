@@ -73,7 +73,7 @@ struct InboxView: View {
                     HStack {
                         if let user {
                             NavigationLink(value: Route.profile(user)) {
-                                CircularProfileImageView(user: user, size: .xSmall)
+                                CircularUserImageView(user: user, size: .xSmall)
                             }
                         }
                     }

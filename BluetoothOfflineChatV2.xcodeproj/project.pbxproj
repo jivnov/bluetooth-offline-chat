@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1445FE162B5C417700DB6ABF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE152B5C417700DB6ABF /* User.swift */; };
-		1445FE192B5C454B00DB6ABF /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE182B5C454B00DB6ABF /* CircularProfileImageView.swift */; };
+		1445FE192B5C454B00DB6ABF /* CircularUserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE182B5C454B00DB6ABF /* CircularUserImageView.swift */; };
 		1445FE1C2B5C4A1B00DB6ABF /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE1B2B5C4A1B00DB6ABF /* ChatView.swift */; };
 		1445FE1E2B5D1BFA00DB6ABF /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE1D2B5D1BFA00DB6ABF /* ChatMessageCell.swift */; };
 		1445FE202B5D1EA200DB6ABF /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445FE1F2B5D1EA200DB6ABF /* ChatBubble.swift */; };
@@ -38,6 +38,8 @@
 		1460FA5E2B6E7AEB0067B1AB /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA5D2B6E7AEB0067B1AB /* NetworkStateView.swift */; };
 		1460FA602B70C4AB0067B1AB /* AppearanceChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA5F2B70C4AB0067B1AB /* AppearanceChangeView.swift */; };
 		1460FA622B717ECE0067B1AB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA612B717ECE0067B1AB /* Color.swift */; };
+		1460FA642B72B2A60067B1AB /* AuthenticationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */; };
+		1460FA662B72B4E60067B1AB /* RandomUserPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */; };
 		14A3C8E82B4ACFC10025860F /* BluetoothOfflineChatV2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */; };
 		14A3C8EA2B4ACFC10025860F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E92B4ACFC10025860F /* ContentView.swift */; };
 		14A3C8EC2B4ACFC30025860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A3C8EB2B4ACFC30025860F /* Assets.xcassets */; };
@@ -75,7 +77,7 @@
 
 /* Begin PBXFileReference section */
 		1445FE152B5C417700DB6ABF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		1445FE182B5C454B00DB6ABF /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		1445FE182B5C454B00DB6ABF /* CircularUserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularUserImageView.swift; sourceTree = "<group>"; };
 		1445FE1B2B5C4A1B00DB6ABF /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		1445FE1D2B5D1BFA00DB6ABF /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		1445FE1F2B5D1EA200DB6ABF /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
@@ -101,6 +103,8 @@
 		1460FA5D2B6E7AEB0067B1AB /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
 		1460FA5F2B70C4AB0067B1AB /* AppearanceChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceChangeView.swift; sourceTree = "<group>"; };
 		1460FA612B717ECE0067B1AB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationImageView.swift; sourceTree = "<group>"; };
+		1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserPhotoHelper.swift; sourceTree = "<group>"; };
 		14A3C8E42B4ACFC10025860F /* BluetoothOfflineChatV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothOfflineChatV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2App.swift; sourceTree = "<group>"; };
 		14A3C8E92B4ACFC10025860F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,7 +158,9 @@
 		1445FE172B5C451B00DB6ABF /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				1445FE182B5C454B00DB6ABF /* CircularProfileImageView.swift */,
+				1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */,
+				1445FE182B5C454B00DB6ABF /* CircularUserImageView.swift */,
+				1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -660,6 +666,7 @@
 				14A3C9262B4AFB8B0025860F /* InboxRowView.swift in Sources */,
 				145EF3D02B5ED8E600B1984B /* InboxViewModel.swift in Sources */,
 				1445FE312B5D54A500DB6ABF /* RegistrationViewModel.swift in Sources */,
+				1460FA642B72B2A60067B1AB /* AuthenticationImageView.swift in Sources */,
 				14A3C92E2B52F1200025860F /* ProfileView.swift in Sources */,
 				14A3C9292B4B0D2C0025860F /* NewMessageView.swift in Sources */,
 				145EF3F32B64671600B1984B /* ProfileService.swift in Sources */,
@@ -674,7 +681,7 @@
 				1445FE1E2B5D1BFA00DB6ABF /* ChatMessageCell.swift in Sources */,
 				1460FA5C2B6E5D870067B1AB /* AppNetworkMode.swift in Sources */,
 				1445FE202B5D1EA200DB6ABF /* ChatBubble.swift in Sources */,
-				1445FE192B5C454B00DB6ABF /* CircularProfileImageView.swift in Sources */,
+				1445FE192B5C454B00DB6ABF /* CircularUserImageView.swift in Sources */,
 				145EF3DF2B64200100B1984B /* ChatService.swift in Sources */,
 				14A3C9212B4AF7AD0025860F /* InboxView.swift in Sources */,
 				1445FE2F2B5D547C00DB6ABF /* LoginViewModel.swift in Sources */,
@@ -683,6 +690,7 @@
 				1460FA5E2B6E7AEB0067B1AB /* NetworkStateView.swift in Sources */,
 				1460FA592B6E5D460067B1AB /* ChatConnectivity.swift in Sources */,
 				145EF3EE2B64579F00B1984B /* Route.swift in Sources */,
+				1460FA662B72B4E60067B1AB /* RandomUserPhotoHelper.swift in Sources */,
 				14A3C9242B4AF95C0025860F /* ActiveNowView.swift in Sources */,
 				14A3C9322B5307660025860F /* ProfileViewModel.swift in Sources */,
 				1445FE162B5C417700DB6ABF /* User.swift in Sources */,
@@ -862,8 +870,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -892,8 +900,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

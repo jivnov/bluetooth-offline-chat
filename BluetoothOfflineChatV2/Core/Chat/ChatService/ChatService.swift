@@ -54,28 +54,33 @@ struct ChatService {
         recentPartnertUserRef.setData(messageData)
         
         if offlineModeEnabled {
-            let stringTime = message.timestamp.dateValue().timestampDateToString()
-            let dataToSend = ["messageId": messageId,
-                              "messageText": messageText,
-                              "timestamp": stringTime]
-            ChatConnectivity.shared.send(message: dataToSend, to: chatPartnerId)
+            ChatConnectivity.shared.send(message: message.encodedToSendOffline, to: chatPartnerId)
         }
     }
     
-    static func getOfflineMessage(from chatPartnerId: String, messageText: String, messageId: String, messageTime: String) {
+    static func getOfflineMessage(from chatPartnerId: String?, messageData: [String : String]) {
+        guard let currentUid = Auth.auth().currentUser?.uid,
+                let chatPartnerId = chatPartnerId,
+                let messageId = messageData["messageId"],
+                let messageText = messageData["messageText"]
+        else { return }
         
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        let time = Date().timestampDate(from: messageTime)
-        let timestamp = time != nil ? Timestamp(date: time!) : Timestamp()
-        
+        var timestamp: Timestamp
+        if let messageTime = messageData["timestamp"], let time = Date().timestampDate(from: messageTime) {
+            timestamp = Timestamp(date: time)
+        }
+        else {
+            timestamp = Timestamp()
+        }
+            
         let currentUserRef = FirestoreConstans.MessagesCollection
             .document(currentUid)
             .collection(chatPartnerId).document(messageId)
         
-        let messageId1 = currentUserRef.documentID
+        let messageDocId = currentUserRef.documentID
         
         let message = Message(
-            messageId: messageId1,
+            messageId: messageDocId,
             fromId: chatPartnerId,
             toId: currentUid,
             messageText: messageText,

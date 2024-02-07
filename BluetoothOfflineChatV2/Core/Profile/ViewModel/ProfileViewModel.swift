@@ -30,13 +30,4 @@ class ProfileViewModel: ObservableObject {
         self.profileImage = Image(uiImage: uiImage)
         Task { try await service.updateUserProfileImage(with: uiImage) }
     }
-    
-    func changeNetworkState(isOn: Bool) {
-        if isOn {
-            AppNetworkMode.setAppMode(.offline)
-        }
-        else {
-            AppNetworkMode.setAppMode(.online)
-        }
-    }
 }

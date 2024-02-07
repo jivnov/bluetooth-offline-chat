@@ -96,7 +96,7 @@ extension ChatConnectivity: MCSessionDelegate {
         
         do {
             let data = try JSONDecoder().decode([String : String].self, from: data)
-            ChatService.getOfflineMessage(from: foundUsersByPeerId[peerID]!, messageText: data["messageText"]!, messageId: data["messageId"]!, messageTime: data["timestamp"]!) // TODO: Force unwrap
+            ChatService.getOfflineMessage(from: foundUsersByPeerId[peerID], messageData: data)
         } catch {
             print(error.localizedDescription)
         }

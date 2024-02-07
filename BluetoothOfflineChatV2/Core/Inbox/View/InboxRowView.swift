@@ -12,7 +12,7 @@ struct InboxRowView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            CircularProfileImageView(user: message.user, size: .medium)
+            CircularUserImageView(user: message.user, size: .medium)
             
             VStack(alignment:. leading, spacing: 4) {
                 Text(message.user?.fullName ?? "")

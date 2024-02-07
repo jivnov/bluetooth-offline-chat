@@ -23,6 +23,16 @@ struct User: Codable, Identifiable, Hashable {
         let components = formatter.personNameComponents(from: fullName)
         return components?.givenName ?? fullName
     }
+    
+    var initialsFromName: String {
+        let components = fullName.split(separator: " ")
+        var result = ""
+        for component in components {
+            result += String(component.first!)
+            result += " "
+        }
+        return result.capitalized
+    }
 }
 
 extension User {
