@@ -54,6 +54,6 @@ class InboxViewModel: ObservableObject {
     }
     
     func nabigationTitle(by offlineEnabled: Bool) -> String {
-        return offlineEnabled ? "Offline Chats" : "Chats"
+        return offlineEnabled ? String(localized: "Offline chats") : String(localized: "Chats")
     }
 }

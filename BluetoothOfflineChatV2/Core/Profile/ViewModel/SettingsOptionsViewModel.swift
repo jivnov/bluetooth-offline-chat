@@ -16,13 +16,13 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .darkMode:
-            return "Dark mode"
+            return String(localized: "Dark mode")
         case .offlineMode:
-            return "Offline mode"
+            return String(localized: "Offline mode")
         case .privacy:
-            return "Security"
+            return String(localized: "Security")
         case .notifications:
-            return "Notifications"
+            return String(localized: "Notifications")
         }
     }
     

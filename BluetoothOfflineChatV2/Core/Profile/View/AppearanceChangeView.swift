@@ -23,12 +23,17 @@ struct AppearanceChangeView: View {
                 .font(.subheadline)
             
             Spacer()
-            Menu(scheme) {
-                Button(ColorSchemeMode.on.rawValue) { scheme = ColorSchemeMode.on.rawValue }
-                Button(ColorSchemeMode.off.rawValue) { scheme = ColorSchemeMode.off.rawValue }
-                Button(ColorSchemeMode.system.rawValue) { scheme = ColorSchemeMode.system.rawValue }
-            }            
+            
+            Menu(getLocalized(value: scheme)) {
+                Button(getLocalized(value: ColorSchemeMode.on.rawValue)) { scheme = ColorSchemeMode.on.rawValue }
+                Button(getLocalized(value: ColorSchemeMode.off.rawValue)) { scheme = ColorSchemeMode.off.rawValue }
+                Button(getLocalized(value: ColorSchemeMode.system.rawValue)) { scheme = ColorSchemeMode.system.rawValue }
+            }
         }
+    }
+    
+    private func getLocalized(value: String) -> String {
+        return String(localized: String.LocalizationValue(value))
     }
 }
 

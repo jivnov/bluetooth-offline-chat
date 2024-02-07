@@ -40,6 +40,7 @@
 		1460FA622B717ECE0067B1AB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA612B717ECE0067B1AB /* Color.swift */; };
 		1460FA642B72B2A60067B1AB /* AuthenticationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */; };
 		1460FA662B72B4E60067B1AB /* RandomUserPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */; };
+		1460FA6A2B74158B0067B1AB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1460FA692B74158B0067B1AB /* Localizable.xcstrings */; };
 		14A3C8E82B4ACFC10025860F /* BluetoothOfflineChatV2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */; };
 		14A3C8EA2B4ACFC10025860F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E92B4ACFC10025860F /* ContentView.swift */; };
 		14A3C8EC2B4ACFC30025860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A3C8EB2B4ACFC30025860F /* Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		1460FA612B717ECE0067B1AB /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationImageView.swift; sourceTree = "<group>"; };
 		1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserPhotoHelper.swift; sourceTree = "<group>"; };
+		1460FA692B74158B0067B1AB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		14A3C8E42B4ACFC10025860F /* BluetoothOfflineChatV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothOfflineChatV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2App.swift; sourceTree = "<group>"; };
 		14A3C8E92B4ACFC10025860F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -324,6 +326,14 @@
 			path = OfflineConnectivity;
 			sourceTree = "<group>";
 		};
+		1460FA672B74154C0067B1AB /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				1460FA692B74158B0067B1AB /* Localizable.xcstrings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		14A3C8DB2B4ACFC10025860F = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +365,7 @@
 				14A3C9162B4AD06F0025860F /* Service */,
 				145EF3E02B6420D600B1984B /* Utils */,
 				14A3C8EB2B4ACFC30025860F /* Assets.xcassets */,
+				1460FA672B74154C0067B1AB /* Localizable */,
 				1445FE212B5D318D00DB6ABF /* GoogleService-Info.plist */,
 				14A3C8ED2B4ACFC30025860F /* Preview Content */,
 			);
@@ -613,6 +624,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 14A3C8DB2B4ACFC10025860F;
 			packageReferences = (
@@ -636,6 +648,7 @@
 			files = (
 				14A3C8EF2B4ACFC30025860F /* Preview Assets.xcassets in Resources */,
 				14A3C8EC2B4ACFC30025860F /* Assets.xcassets in Resources */,
+				1460FA6A2B74158B0067B1AB /* Localizable.xcstrings in Resources */,
 				1445FE222B5D318E00DB6ABF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
