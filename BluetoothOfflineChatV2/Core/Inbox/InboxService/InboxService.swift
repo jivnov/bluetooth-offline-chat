@@ -10,9 +10,7 @@ import Firebase
 
 class InboxService {
     @Published var documentChanges = [DocumentChange]()
-    
-    static let shared = InboxService()
-    
+        
     func observeRecentMessages() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         

@@ -11,6 +11,11 @@ import PhotosUI
 struct ProfileView: View {
     @StateObject var viewModel: ProfileViewModel
     let user: User
+    
+    private var isIpad : Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    private var fieldsWidth : Double {
+        isIpad ? (UIScreen.main.bounds.width * 0.75) : UIScreen.main.bounds.width
+    }
         
     init(user: User) {
         self.user = user
@@ -68,6 +73,7 @@ struct ProfileView: View {
                 }
                 .foregroundStyle(.red)
             }
+            .frame(width: fieldsWidth )
         }
     }
 }

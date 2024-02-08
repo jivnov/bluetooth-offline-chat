@@ -14,19 +14,20 @@ class InboxViewModel: ObservableObject {
     @Published var recentMessages = [Message]()
     
     private var cancellables = Set<AnyCancellable>()
+    private let service = InboxService()
     
     init() {
-        setupSubscribers()
-        InboxService.shared.observeRecentMessages()
+        setupInboxChats()
+        service.observeRecentMessages()
     }
     
-    private func setupSubscribers() {
+    private func setupInboxChats() {
         UserService.shared.$currentUser.sink { [weak self] user in
             guard let strongSelf = self else {return}
             strongSelf.currentUser = user
         }.store(in: &cancellables)
         
-        InboxService.shared.$documentChanges.sink { [weak self] changes in
+        service.$documentChanges.sink { [weak self] changes in
             guard let strongSelf = self else {return}
             Task { try await strongSelf.loadInitialMessages(fromChanges: changes) }
         }.store(in: &cancellables)
