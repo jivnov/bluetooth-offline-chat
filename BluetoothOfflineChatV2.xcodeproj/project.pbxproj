@@ -41,6 +41,9 @@
 		1460FA642B72B2A60067B1AB /* AuthenticationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */; };
 		1460FA662B72B4E60067B1AB /* RandomUserPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */; };
 		1460FA6A2B74158B0067B1AB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1460FA692B74158B0067B1AB /* Localizable.xcstrings */; };
+		1460FA6C2B7434900067B1AB /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA6B2B7434900067B1AB /* ForgotPasswordView.swift */; };
+		1460FA6E2B74361E0067B1AB /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA6D2B74361E0067B1AB /* ForgotPasswordViewModel.swift */; };
+		1460FA702B74B0250067B1AB /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460FA6F2B74B0250067B1AB /* ShakeEffect.swift */; };
 		14A3C8E82B4ACFC10025860F /* BluetoothOfflineChatV2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */; };
 		14A3C8EA2B4ACFC10025860F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3C8E92B4ACFC10025860F /* ContentView.swift */; };
 		14A3C8EC2B4ACFC30025860F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14A3C8EB2B4ACFC30025860F /* Assets.xcassets */; };
@@ -107,6 +110,9 @@
 		1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationImageView.swift; sourceTree = "<group>"; };
 		1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUserPhotoHelper.swift; sourceTree = "<group>"; };
 		1460FA692B74158B0067B1AB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		1460FA6B2B7434900067B1AB /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		1460FA6D2B74361E0067B1AB /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		1460FA6F2B74B0250067B1AB /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		14A3C8E42B4ACFC10025860F /* BluetoothOfflineChatV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothOfflineChatV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14A3C8E72B4ACFC10025860F /* BluetoothOfflineChatV2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothOfflineChatV2App.swift; sourceTree = "<group>"; };
 		14A3C8E92B4ACFC10025860F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 				1460FA632B72B2A60067B1AB /* AuthenticationImageView.swift */,
 				1445FE182B5C454B00DB6ABF /* CircularUserImageView.swift */,
 				1460FA652B72B4E60067B1AB /* RandomUserPhotoHelper.swift */,
+				1460FA6F2B74B0250067B1AB /* ShakeEffect.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 			children = (
 				1445FE2E2B5D547C00DB6ABF /* LoginViewModel.swift */,
 				1445FE302B5D54A500DB6ABF /* RegistrationViewModel.swift */,
+				1460FA6D2B74361E0067B1AB /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 			children = (
 				14A3C91B2B4AD1360025860F /* LoginView.swift */,
 				14A3C91D2B4AF58B0025860F /* RegistrationView.swift */,
+				1460FA6B2B7434900067B1AB /* ForgotPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -682,6 +691,7 @@
 				1460FA642B72B2A60067B1AB /* AuthenticationImageView.swift in Sources */,
 				14A3C92E2B52F1200025860F /* ProfileView.swift in Sources */,
 				14A3C9292B4B0D2C0025860F /* NewMessageView.swift in Sources */,
+				1460FA6E2B74361E0067B1AB /* ForgotPasswordViewModel.swift in Sources */,
 				145EF3F32B64671600B1984B /* ProfileService.swift in Sources */,
 				1445FE372B5D5D0800DB6ABF /* ContentViewModel.swift in Sources */,
 				14A3C91C2B4AD1360025860F /* LoginView.swift in Sources */,
@@ -690,8 +700,10 @@
 				1445FE332B5D54C400DB6ABF /* AuthService.swift in Sources */,
 				14A3C8EA2B4ACFC10025860F /* ContentView.swift in Sources */,
 				145EF3E52B6430CC00B1984B /* InboxService.swift in Sources */,
+				1460FA702B74B0250067B1AB /* ShakeEffect.swift in Sources */,
 				1460FA602B70C4AB0067B1AB /* AppearanceChangeView.swift in Sources */,
 				1445FE1E2B5D1BFA00DB6ABF /* ChatMessageCell.swift in Sources */,
+				1460FA6C2B7434900067B1AB /* ForgotPasswordView.swift in Sources */,
 				1460FA5C2B6E5D870067B1AB /* AppNetworkMode.swift in Sources */,
 				1445FE202B5D1EA200DB6ABF /* ChatBubble.swift in Sources */,
 				1445FE192B5C454B00DB6ABF /* CircularUserImageView.swift in Sources */,

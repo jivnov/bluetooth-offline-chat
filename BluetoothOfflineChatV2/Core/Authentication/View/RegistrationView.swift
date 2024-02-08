@@ -52,6 +52,8 @@ struct RegistrationView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                     .padding(.trailing, 24)
+                    .modifier(ShakeEffect(shakes: viewModel.shouldShakeName ? 2 : 0))
+                    .animation(Animation.default.repeatCount(2).speed(1), value:  viewModel.shouldShakeName)
             }
             .frame(width: fieldsWidth )
             
@@ -66,6 +68,8 @@ struct RegistrationView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                     .padding(.trailing, 24)
+                    .modifier(ShakeEffect(shakes: viewModel.shouldShakeEmail ? 2 : 0))
+                    .animation(Animation.default.repeatCount(2).speed(1), value:  viewModel.shouldShakeEmail)
             }
             .frame(width: fieldsWidth )
             
@@ -78,14 +82,19 @@ struct RegistrationView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(10)
                     .padding(.trailing, 24)
+                    .modifier(ShakeEffect(shakes: viewModel.shouldShakePassword ? 2 : 0))
+                    .animation(Animation.default.repeatCount(2).speed(1), value:  viewModel.shouldShakePassword)
             }
             .frame(width: fieldsWidth )
+        }
+        .onSubmit {
+            viewModel.tryToCreateUser()
         }
     }
     
     private var signUpButton: some View {
         Button {
-            Task { try await viewModel.createUser() }
+            viewModel.tryToCreateUser()
         } label: {
             Text("Sign Up")
                 .font(.subheadline)

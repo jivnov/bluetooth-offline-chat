@@ -57,6 +57,8 @@ struct LoginView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
                     .padding(.trailing, 24)
+                    .modifier(ShakeEffect(shakes: viewModel.shouldShakeEmail ? 2 : 0))
+                    .animation(Animation.default.repeatCount(2).speed(1), value:  viewModel.shouldShakeEmail)
             }
             .frame(width: fieldsWidth )
             
@@ -69,14 +71,20 @@ struct LoginView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
                     .padding(.trailing, 24)
+                    .modifier(ShakeEffect(shakes: viewModel.shouldShakePassword ? 2 : 0))
+                    .animation(Animation.default.repeatCount(2).speed(1), value:  viewModel.shouldShakePassword)
             }
             .frame(width: fieldsWidth )
+        }
+        .onSubmit {
+            viewModel.tryToLogin()
         }
     }
     
     private var forgotPasswordButton: some View {
-        Button {
-            print("Forgot password")
+        NavigationLink {
+            ForgotPasswordView()
+                .navigationBarBackButtonHidden()
         } label: {
             Text("Forgot password?")
                 .font(.footnote)
@@ -90,7 +98,7 @@ struct LoginView: View {
     
     private var loginButton: some View {
         Button {
-            Task { try await viewModel.login() }
+            viewModel.tryToLogin()
         } label: {
             Text("Login")
                 .font(.subheadline)

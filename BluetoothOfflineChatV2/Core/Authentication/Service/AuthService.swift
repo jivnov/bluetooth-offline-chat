@@ -54,6 +54,14 @@ class AuthService {
         }
     }
     
+    func resetPassword(email: String) async throws {
+        do {
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+        } catch{
+            print("Failed to reset password: \(error.localizedDescription)")
+        }
+    }
+    
     private func uploadUserData(email: String, fullname: String, id: String) async throws {
         let user = User(fullName: fullname, email: email, profileImageUrl: nil)
         guard let encodedUser = try? Firestore.Encoder().encode(user) else {return}

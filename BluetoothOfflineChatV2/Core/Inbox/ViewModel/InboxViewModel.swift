@@ -14,11 +14,10 @@ class InboxViewModel: ObservableObject {
     @Published var recentMessages = [Message]()
     
     private var cancellables = Set<AnyCancellable>()
-    private let service = InboxService() //TODO: create share instance
     
     init() {
         setupSubscribers()
-        service.observeRecentMessages()
+        InboxService.shared.observeRecentMessages()
     }
     
     private func setupSubscribers() {
@@ -27,32 +26,33 @@ class InboxViewModel: ObservableObject {
             strongSelf.currentUser = user
         }.store(in: &cancellables)
         
-        service.$documentChanges.sink { [weak self] changes in
+        InboxService.shared.$documentChanges.sink { [weak self] changes in
             guard let strongSelf = self else {return}
-            strongSelf.loadInitialMessages(fromChanges: changes)
+            Task { try await strongSelf.loadInitialMessages(fromChanges: changes) }
         }.store(in: &cancellables)
     
     }
     
-    private func loadInitialMessages(fromChanges changes: [DocumentChange]) {
-        var messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
+    @MainActor
+    private func loadInitialMessages(fromChanges changes: [DocumentChange]) async throws {
+        let messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
         
         for i in 0..<messages.count {
-            let message = messages[i]
+            var message = messages[i]
             
-            for (idx, msg) in recentMessages.enumerated() {
-                if msg.fromId == message.chatPartnerId || msg.toId == message.chatPartnerId {
-                    recentMessages.remove(at: idx)
-                }
+            if let existingIndex = self.recentMessages.firstIndex(where: { $0.fromId == message.chatPartnerId || $0.toId == message.chatPartnerId }) {
+                message.user = self.recentMessages[existingIndex].user
+                recentMessages.remove(at: existingIndex)
+                self.recentMessages.insert(message, at: 0)
+                
+                continue
             }
             
-            UserService.fetchUser(withUid: message.chatPartnerId) { user in
-                messages[i].user = user
-                self.recentMessages.insert(messages[i], at: 0)
-            }
+            message.user = try await UserService.fetchUser(withUid:  message.chatPartnerId)
+            self.recentMessages.append(message)
         }
     }
-    
+
     func nabigationTitle(by offlineEnabled: Bool) -> String {
         return offlineEnabled ? String(localized: "Offline chats") : String(localized: "Chats")
     }

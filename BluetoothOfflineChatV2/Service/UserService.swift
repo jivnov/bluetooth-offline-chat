@@ -31,10 +31,9 @@ class UserService {
         return snapshot.documents.compactMap({ try? $0.data(as: User.self) })
     }
     
-    static func fetchUser(withUid uid: String, completion: @escaping(User) -> Void)  {
-        FirestoreConstans.UserCollection.document(uid).getDocument { snapshot, _ in
-            guard let user = try? snapshot?.data(as: User.self) else { return }
-            completion(user)
-        }
+    static func fetchUser(withUid uid: String) async throws -> User?  {
+        let snapshot = try await FirestoreConstans.UserCollection.document(uid).getDocument()
+        guard let user = try? snapshot.data(as: User.self) else { return nil }
+        return user
     }
 }

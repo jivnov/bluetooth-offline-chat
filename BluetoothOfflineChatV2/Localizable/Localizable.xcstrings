@@ -147,6 +147,22 @@
         }
       }
     },
+    "Enter your email address and we will send you a link to reset your password." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your email address and we will send you a link to reset your password."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podaj adres email na który ma zostać wysłany link do zmiany hasła."
+          }
+        }
+      }
+    },
     "Enter your name" : {
       "localizations" : {
         "en" : {
@@ -190,7 +206,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zapomniano hasło?"
+            "value" : "Nie pamiętasz hasła?"
           }
         }
       }
@@ -373,6 +389,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bezpieczeństwo"
+          }
+        }
+      }
+    },
+    "Send" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyślij"
           }
         }
       }
