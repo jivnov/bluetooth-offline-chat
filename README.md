@@ -3,6 +3,7 @@ Bluetooth Chat is an iOS app that allows users to engage in chat conversations u
 ## Features
 
 - Dark mode support
+- Localization EN and PL
 - Chat with other users online or using Bluetooth/Local Network connectivity.
 - Messages are stored in a local database, allowing users to view their chat history and read old messages. The database automatically synchronizes after returning online.
 - Ensured app security by implementing passcode and biometric authentication for device locking.

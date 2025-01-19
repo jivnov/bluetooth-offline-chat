@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "Already have an account?" : {
       "localizations" : {
         "en" : {
@@ -29,6 +32,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zamknij"
+          }
+        }
+      }
+    },
+    "Change Passcode" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zmień Pin"
           }
         }
       }
@@ -115,6 +128,46 @@
         }
       }
     },
+    "Disable" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłącz"
+          }
+        }
+      }
+    },
+    "Disable Biometrics" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłącz biometrię"
+          }
+        }
+      }
+    },
+    "Disable Passcode" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłącz Pin"
+          }
+        }
+      }
+    },
+    "Disable Passcode?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyłączyć Pin"
+          }
+        }
+      }
+    },
     "Don't have an account?" : {
       "localizations" : {
         "en" : {
@@ -127,6 +180,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nie masz konta?"
+          }
+        }
+      }
+    },
+    "Enable Biometrics" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Włącz biometrię"
           }
         }
       }
@@ -376,6 +439,46 @@
         }
       }
     },
+    "Passcode & Security" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin i Bezpieczeństwo"
+          }
+        }
+      }
+    },
+    "Passcodes do not match! Try again." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podane kody są różne! Spróbuj ponownie."
+          }
+        }
+      }
+    },
+    "Provide passcode to disable it." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź pin żeby go wyłączyć"
+          }
+        }
+      }
+    },
+    "Re-enter passcode" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potwierdź pin"
+          }
+        }
+      }
+    },
     "Security" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -405,6 +508,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wyślij"
+          }
+        }
+      }
+    },
+    "Set Passcode" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw Pin"
+          }
+        }
+      }
+    },
+    "Set up a passcode to secure your data." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw pin żeby zabiezpieczyć swoje dane"
           }
         }
       }
@@ -470,6 +593,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do:"
+          }
+        }
+      }
+    },
+    "Wrong passcode! Try again." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błędny pin! Spróbuj ponownie."
           }
         }
       }

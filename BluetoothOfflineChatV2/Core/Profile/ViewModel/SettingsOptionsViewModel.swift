@@ -69,8 +69,19 @@ enum SettingsOptionsViewModel: Int, CaseIterable, Identifiable {
             return AnyView(AppearanceChangeView())
         case .offlineMode:
             return AnyView(NetworkStateView())
+        case .privacy:
+            return AnyView(SecurityView())
         default:
             return AnyView(EmptyView())
+        }
+    }
+    
+    var isButton: Bool {
+        switch self {
+        case .privacy:
+            return true
+        default:
+            return false
         }
     }
     

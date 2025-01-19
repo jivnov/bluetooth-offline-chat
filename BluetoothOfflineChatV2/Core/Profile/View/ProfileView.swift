@@ -49,14 +49,28 @@ struct ProfileView: View {
                             option.specialView
                         }
                         else {
-                            HStack {
-                                Image(systemName: option.imageName)
-                                    .resizable()
-                                    .frame(width: 24, height: 24)
-                                    .foregroundStyle(option.imageBackgroundColor)
-                                
-                                Text(option.title)
-                                    .font(.subheadline)
+                            if option.isButton {
+                                NavigationLink(destination: option.specialView) {
+                                                HStack {
+                                                    Image(systemName: option.imageName)
+                                                        .resizable()
+                                                        .frame(width: 24, height: 24)
+                                                        .foregroundStyle(option.imageBackgroundColor)
+                                                    
+                                                    Text(option.title)
+                                                        .font(.subheadline)
+                                                }
+                                            }
+                            } else {
+                                HStack {
+                                    Image(systemName: option.imageName)
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundStyle(option.imageBackgroundColor)
+                                    
+                                    Text(option.title)
+                                        .font(.subheadline)
+                                }
                             }
                         }
                     }
