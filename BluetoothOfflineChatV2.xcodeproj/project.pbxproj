@@ -140,6 +140,7 @@
 		6030D6CB2D3A9078002A7085 /* SecurityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewModel.swift; sourceTree = "<group>"; };
 		6030D6CD2D3A9200002A7085 /* PasscodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeInputView.swift; sourceTree = "<group>"; };
 		6030D6CF2D3D0E92002A7085 /* SecurityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityService.swift; sourceTree = "<group>"; };
+		6030D6D12D3D3736002A7085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +374,7 @@
 		14A3C8E62B4ACFC10025860F /* BluetoothOfflineChatV2 */ = {
 			isa = PBXGroup;
 			children = (
+				6030D6D12D3D3736002A7085 /* Info.plist */,
 				14A3C9152B4AD04F0025860F /* App */,
 				14A3C9142B4AD04C0025860F /* Core */,
 				14A3C9172B4AD07C0025860F /* Extensions */,
@@ -939,6 +941,7 @@
 				DEVELOPMENT_TEAM = KDC4HBM422;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BluetoothOfflineChatV2/Info.plist;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Exchange data with nearby devices running the offline chat mode.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -970,6 +973,7 @@
 				DEVELOPMENT_TEAM = KDC4HBM422;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BluetoothOfflineChatV2/Info.plist;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Exchange data with nearby devices running the offline chat mode.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

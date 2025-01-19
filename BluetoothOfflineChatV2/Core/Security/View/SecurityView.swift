@@ -10,7 +10,10 @@ import SwiftUI
 struct SecurityView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var showConfirmDisablePasscodeAlert: Bool = false
+    @State private var showBiometricsAlert: Bool = false
     @StateObject var viewModel = SecurityViewModel()
+    
+    @State private var biometricsError: String = ""
 
     var body: some View {
         VStack {
@@ -45,6 +48,11 @@ struct SecurityView: View {
                 viewModel.disablePasscode()
             }
         }
+        .alert(biometricsError, isPresented: $showBiometricsAlert) {
+            Button("Cancel", role: .cancel) {
+                self.biometricsError = ""
+            }
+        }
     }
     
     private var setPasscodeButton: some View {
@@ -64,7 +72,10 @@ struct SecurityView: View {
     
     private var biometricButton: some View {
         Button {
-            
+            if let err = viewModel.changeBiometricStatus() {
+                biometricsError = err
+                showBiometricsAlert = true
+            }
         } label: {
             Text(viewModel.isBiometricEnabled ? "Disable Biometrics" : "Enable Biometrics")
                 .font(.subheadline)

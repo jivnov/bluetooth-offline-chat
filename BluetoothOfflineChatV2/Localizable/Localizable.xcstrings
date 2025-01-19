@@ -459,6 +459,9 @@
         }
       }
     },
+    "Provide passcode to change biometric settings." : {
+
+    },
     "Provide passcode to disable it." : {
       "localizations" : {
         "pl" : {
