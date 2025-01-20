@@ -77,6 +77,8 @@ class SecurityViewModel: ObservableObject {
             handleSetBiometrics(fullPasscode)
         case .wrongPasscode:
             handleWrongPasscode(fullPasscode)
+        default:
+            return
         }
     }
 
@@ -164,6 +166,7 @@ class SecurityViewModel: ObservableObject {
 
 enum SecurityOptionsViewModel: Int, CaseIterable {
     case noPasscode
+    case enterPasscode
     case mismatchPasscode
     case reEnterPasscode
     case changePasscode
@@ -174,6 +177,7 @@ enum SecurityOptionsViewModel: Int, CaseIterable {
     var title: String {
         switch self {
         case .noPasscode: return String(localized: "Set Passcode")
+        case .enterPasscode: return String(localized: "Enter Passcode to unlock app.")
         case .mismatchPasscode: return String(localized: "Passcodes do not match! Try again.")
         case .reEnterPasscode: return String(localized: "Re-enter passcode")
         case .changePasscode: return String(localized: "Change Passcode")

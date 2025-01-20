@@ -59,21 +59,31 @@ struct SecurityService {
         return error?.localizedDescription
     }
     
-    static func authenticateWithBiometrics(completion: @escaping (Bool, Error?) -> Void) {
+    static func getBiometricType() -> String? {
+        let context = LAContext()
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) else { return nil}
+        switch context.biometryType {
+        case .faceID:
+            return "faceid"
+        case .touchID:
+            return "touchid"
+        case .opticID:
+            return "opticid"
+        default:
+            return nil
+        }
+    }
+    
+    static func authenticateWithBiometrics() async throws -> Bool {
         let context = LAContext()
         var error: NSError?
-        let reason = "Authenticate to access your passcode"
+        let reason = String(localized: "Use biometric to access app data.")
         
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, evaluateError in
-                DispatchQueue.main.async {
-                    completion(success, evaluateError)
-                }
-            }
-        } else {
-            DispatchQueue.main.async {
-                completion(false, error)
-            }
+        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
+            
+            throw error ?? NSError(domain: "Unknown error", code: -10)
         }
+        
+        return try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason)
     }
 }

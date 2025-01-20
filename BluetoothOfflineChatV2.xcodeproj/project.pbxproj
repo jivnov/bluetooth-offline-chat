@@ -64,6 +64,8 @@
 		6030D6CC2D3A907E002A7085 /* SecurityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030D6CB2D3A9078002A7085 /* SecurityViewModel.swift */; };
 		6030D6CE2D3A9201002A7085 /* PasscodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030D6CD2D3A9200002A7085 /* PasscodeInputView.swift */; };
 		6030D6D02D3D0E9A002A7085 /* SecurityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030D6CF2D3D0E92002A7085 /* SecurityService.swift */; };
+		6030D6D52D3D747C002A7085 /* PasscodeLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030D6D42D3D746B002A7085 /* PasscodeLoginView.swift */; };
+		6030D6D72D3D7605002A7085 /* PasscodeLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030D6D62D3D7602002A7085 /* PasscodeLoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,8 @@
 		6030D6CD2D3A9200002A7085 /* PasscodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeInputView.swift; sourceTree = "<group>"; };
 		6030D6CF2D3D0E92002A7085 /* SecurityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityService.swift; sourceTree = "<group>"; };
 		6030D6D12D3D3736002A7085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6030D6D42D3D746B002A7085 /* PasscodeLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeLoginView.swift; sourceTree = "<group>"; };
+		6030D6D62D3D7602002A7085 /* PasscodeLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeLoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -573,6 +577,7 @@
 		6030D6C72D3A8FE0002A7085 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6030D6D42D3D746B002A7085 /* PasscodeLoginView.swift */,
 				6030D6CD2D3A9200002A7085 /* PasscodeInputView.swift */,
 				6030D6C92D3A900D002A7085 /* SecurityView.swift */,
 			);
@@ -582,6 +587,7 @@
 		6030D6C82D3A8FE6002A7085 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6030D6D62D3D7602002A7085 /* PasscodeLoginViewModel.swift */,
 				6030D6CB2D3A9078002A7085 /* SecurityViewModel.swift */,
 			);
 			path = ViewModel;
@@ -765,6 +771,7 @@
 				145EF3EE2B64579F00B1984B /* Route.swift in Sources */,
 				1460FA662B72B4E60067B1AB /* RandomUserPhotoHelper.swift in Sources */,
 				14A3C9242B4AF95C0025860F /* ActiveNowView.swift in Sources */,
+				6030D6D52D3D747C002A7085 /* PasscodeLoginView.swift in Sources */,
 				6030D6CE2D3A9201002A7085 /* PasscodeInputView.swift in Sources */,
 				14A3C9322B5307660025860F /* ProfileViewModel.swift in Sources */,
 				6030D6CC2D3A907E002A7085 /* SecurityViewModel.swift in Sources */,
@@ -774,6 +781,7 @@
 				145EF3EB2B64548800B1984B /* ActiveNowViewModel.swift in Sources */,
 				14A3C9302B52F2E90025860F /* SettingsOptionsViewModel.swift in Sources */,
 				145EF3E22B6420F700B1984B /* Constans.swift in Sources */,
+				6030D6D72D3D7605002A7085 /* PasscodeLoginViewModel.swift in Sources */,
 				14A3C91E2B4AF58B0025860F /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

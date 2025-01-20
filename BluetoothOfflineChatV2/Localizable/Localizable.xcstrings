@@ -214,6 +214,16 @@
         }
       }
     },
+    "Enter Passcode to unlock app." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź Pin żeby odblokować aplikację."
+          }
+        }
+      }
+    },
     "Enter your email" : {
       "localizations" : {
         "en" : {
@@ -633,6 +643,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do:"
+          }
+        }
+      }
+    },
+    "Use biometric to access app data." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Użyj biometrii żeby odblokować aplikację."
           }
         }
       }
