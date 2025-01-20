@@ -15,49 +15,44 @@ class SecurityViewModel: ObservableObject {
     @Published var shouldPresentPasscodeInputView = false
     @Published var shouldEmptyPasscode = false
     @Published var options: SecurityOptionsViewModel = .noPasscode
-    
+
     private var repasscode = ""
     private var nextOption: SecurityOptionsViewModel?
     private var cancellables = Set<AnyCancellable>()
-    
+
     init() {
-        isPasswordEnabled = SecurityService.retrievePasscode() != nil
-        isBiometricEnabled = SecurityService.isBiometricEnabled()
+        self.isPasswordEnabled = SecurityService.retrievePasscode() != nil
+        self.isBiometricEnabled = SecurityService.isBiometricEnabled()
         setupPasscodeListener()
     }
-    
+
     func startPasscodeSet() {
-        shouldPresentPasscodeInputView.toggle()
-        passcode = ""
-        shouldEmptyPasscode.toggle()
+        startPasscodeAction(for: .noPasscode)
     }
-    
+
     func startPasscodeChange() {
-        shouldPresentPasscodeInputView.toggle()
-        options = .changePasscode
-        passcode = ""
-        shouldEmptyPasscode.toggle()
+        startPasscodeAction(for: .changePasscode)
     }
-    
+
     func disablePasscode() {
-        shouldPresentPasscodeInputView.toggle()
-        options = .disablePasscode
-        passcode = ""
-        shouldEmptyPasscode.toggle()
+        startPasscodeAction(for: .disablePasscode)
     }
-    
+
     func changeBiometricStatus() -> String? {
-        if let err = SecurityService.canUseBiometricAuthentication() {
-            return err
+        if let error = SecurityService.canUseBiometricAuthentication() {
+            return error
         }
-        
-        shouldPresentPasscodeInputView.toggle()
-        options = .setBiometrics
-        passcode = ""
-        shouldEmptyPasscode.toggle()
+        startPasscodeAction(for: .setBiometrics)
         return nil
     }
-    
+
+    private func startPasscodeAction(for option: SecurityOptionsViewModel) {
+        options = option
+        shouldPresentPasscodeInputView = true
+        passcode = ""
+        shouldEmptyPasscode.toggle()
+    }
+
     private func setupPasscodeListener() {
         $passcode
             .removeDuplicates()
@@ -67,95 +62,102 @@ class SecurityViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-    
+
     private func handleFullPasscode(_ fullPasscode: String) {
         switch options {
-        case .noPasscode:
-            noPasscode(handle: fullPasscode)
-        case .mismatchPasscode:
-            noPasscode(handle: fullPasscode)
+        case .noPasscode, .mismatchPasscode:
+            handleSetPasscode(fullPasscode)
         case .reEnterPasscode:
-            reEnterPasscode(handle: fullPasscode)
+            handleReEnterPasscode(fullPasscode)
         case .changePasscode:
-            changePasscode(handle: fullPasscode)
-        case .wrongPasscode:
-            guard let nxtopt = nextOption else { return }
-            options = nxtopt
-            nextOption = nil
-            handleFullPasscode(fullPasscode)
+            handleChangePasscode(fullPasscode)
         case .disablePasscode:
-            disablePasscode(handle: fullPasscode)
+            handleDisablePasscode(fullPasscode)
         case .setBiometrics:
-            setBiometrics(handle: fullPasscode)
+            handleSetBiometrics(fullPasscode)
+        case .wrongPasscode:
+            handleWrongPasscode(fullPasscode)
         }
     }
-    
-    private func noPasscode(handle fullPasscode: String) {
+
+    private func handleSetPasscode(_ fullPasscode: String) {
         guard repasscode.isEmpty else { return }
         repasscode = fullPasscode
         options = .reEnterPasscode
         shouldEmptyPasscode.toggle()
     }
-    
-    private func reEnterPasscode(handle fullPasscode: String) {
+
+    private func handleReEnterPasscode(_ fullPasscode: String) {
         if fullPasscode == repasscode {
             SecurityService.savePasscode(fullPasscode)
             isPasswordEnabled = true
-            repasscode = ""
-            shouldEmptyPasscode.toggle()
-            shouldPresentPasscodeInputView.toggle()
-        }
-        else {
-            repasscode = ""
+            resetPasscodeState()
+        } else {
             options = .mismatchPasscode
             shouldEmptyPasscode.toggle()
+            repasscode = ""
         }
     }
-    
-    private func changePasscode(handle fullPasscode: String) {
-        let currentPasscode = SecurityService.retrievePasscode()
+
+    private func handleChangePasscode(_ fullPasscode: String) {
+        guard let currentPasscode = SecurityService.retrievePasscode() else { return }
         shouldEmptyPasscode.toggle()
+
         if fullPasscode == currentPasscode {
             options = .noPasscode
-        }
-        else {
+        } else {
             options = .wrongPasscode
             nextOption = .changePasscode
         }
     }
-    
-    private func disablePasscode(handle fullPasscode: String) {
-        let currentPasscode = SecurityService.retrievePasscode()
+
+    private func handleDisablePasscode(_ fullPasscode: String) {
+        guard let currentPasscode = SecurityService.retrievePasscode() else { return }
         shouldEmptyPasscode.toggle()
+
         if fullPasscode == currentPasscode {
-            shouldPresentPasscodeInputView.toggle()
-            isPasswordEnabled = false
-            options = .noPasscode
             SecurityService.deletePasscode()
-            
-            if isBiometricEnabled {
-                isBiometricEnabled = false
-                SecurityService.setBiometricState(isOn: isBiometricEnabled)
-            }
-        }
-        else {
+            isPasswordEnabled = false
+            resetBiometricState()
+            resetPasscodeState()
+        } else {
             options = .wrongPasscode
-            options = .disablePasscode
+            nextOption = .disablePasscode
         }
     }
-    
-    private func setBiometrics(handle fullPasscode: String) {
-        let currentPasscode = SecurityService.retrievePasscode()
+
+    private func handleSetBiometrics(_ fullPasscode: String) {
+        guard let currentPasscode = SecurityService.retrievePasscode() else { return }
         shouldEmptyPasscode.toggle()
+
         if fullPasscode == currentPasscode {
-            shouldPresentPasscodeInputView.toggle()
             isBiometricEnabled.toggle()
             SecurityService.setBiometricState(isOn: isBiometricEnabled)
-            options = .noPasscode
-        }
-        else {
+            resetPasscodeState()
+        } else {
             options = .wrongPasscode
             nextOption = .setBiometrics
+        }
+    }
+
+    private func handleWrongPasscode(_ fullPasscode: String) {
+        guard let next = nextOption else { return }
+        options = next
+        nextOption = nil
+        handleFullPasscode(fullPasscode)
+    }
+
+    private func resetPasscodeState() {
+        repasscode = ""
+        shouldPresentPasscodeInputView = false
+        shouldEmptyPasscode.toggle()
+        options = .noPasscode
+    }
+
+    private func resetBiometricState() {
+        if isBiometricEnabled {
+            isBiometricEnabled = false
+            SecurityService.setBiometricState(isOn: false)
         }
     }
 }
@@ -168,23 +170,16 @@ enum SecurityOptionsViewModel: Int, CaseIterable {
     case wrongPasscode
     case disablePasscode
     case setBiometrics
-        
+
     var title: String {
         switch self {
-        case .noPasscode:
-            return String(localized: "Set Passcode")
-        case .mismatchPasscode:
-            return String(localized: "Passcodes do not match! Try again.")
-        case .reEnterPasscode:
-            return String(localized: "Re-enter passcode")
-        case .changePasscode:
-            return String(localized: "Change Passcode")
-        case .wrongPasscode:
-            return String(localized: "Wrong passcode! Try again.")
-        case .disablePasscode:
-            return String(localized: "Provide passcode to disable it.")
-        case .setBiometrics:
-            return String(localized: "Provide passcode to change biometric settings.")
+        case .noPasscode: return String(localized: "Set Passcode")
+        case .mismatchPasscode: return String(localized: "Passcodes do not match! Try again.")
+        case .reEnterPasscode: return String(localized: "Re-enter passcode")
+        case .changePasscode: return String(localized: "Change Passcode")
+        case .wrongPasscode: return String(localized: "Wrong passcode! Try again.")
+        case .disablePasscode: return String(localized: "Provide passcode to disable it.")
+        case .setBiometrics: return String(localized: "Provide passcode to change biometric settings.")
         }
     }
 }

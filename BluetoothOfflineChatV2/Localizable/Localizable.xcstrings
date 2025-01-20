@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "Already have an account?" : {
       "localizations" : {
@@ -16,6 +16,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Już masz konto?"
+          }
+        }
+      }
+    },
+    "Are you sure you want to disable the passcode?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Napewno chcesz wyłączyć pin?"
+          }
+        }
+      }
+    },
+    "Biometric Error" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd biometrii"
           }
         }
       }
@@ -406,6 +426,16 @@
         }
       }
     },
+    "OK" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
     "On" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -460,7 +490,14 @@
       }
     },
     "Provide passcode to change biometric settings." : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź pin żeby zmienić ustawienia biometrii."
+          }
+        }
+      }
     },
     "Provide passcode to disable it." : {
       "localizations" : {
