@@ -8,19 +8,11 @@
 import Foundation
 import Combine
 
-class PasscodeLoginViewModel: ObservableObject {
-    @Published var isBiometricEnabled: Bool
-    @Published var passcode = ""
-    @Published var shouldPresentPasscodeInputView: Bool
-    @Published var shouldEmptyPasscode = false
-    @Published var options: SecurityOptionsViewModel = .enterPasscode
-
-    private var cancellables = Set<AnyCancellable>()
-
-    init() {
-        self.shouldPresentPasscodeInputView = SecurityService.retrievePasscode() != nil
-        self.isBiometricEnabled = SecurityService.isBiometricEnabled()
-        setupPasscodeListener()
+class PasscodeLoginViewModel: SecurityViewModel {
+    override init() {
+        super.init()
+        options = .enterPasscode
+        shouldPresentPasscodeInputView = SecurityService.retrievePasscode() != nil
     }
     
     func getBiometricType() -> String? {
@@ -32,24 +24,14 @@ class PasscodeLoginViewModel: ObservableObject {
         Task {
             do {
                 let result = try await SecurityService.authenticateWithBiometrics()
-                self.shouldPresentPasscodeInputView = false
+                self.shouldPresentPasscodeInputView = !result
             } catch let error {
                 print(error.localizedDescription)
             }
         }
     }
 
-    private func setupPasscodeListener() {
-        $passcode
-            .removeDuplicates()
-            .filter { $0.count == 6 }
-            .sink { [weak self] fullPasscode in
-                self?.handleFullPasscode(fullPasscode)
-            }
-            .store(in: &cancellables)
-    }
-
-    private func handleFullPasscode(_ fullPasscode: String) {
+    override func handleFullPasscode(_ fullPasscode: String) {
         switch options {
         case .enterPasscode, .mismatchPasscode:
             handlePasscode(fullPasscode)

@@ -63,7 +63,7 @@ class SecurityViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    private func handleFullPasscode(_ fullPasscode: String) {
+    func handleFullPasscode(_ fullPasscode: String) {
         switch options {
         case .noPasscode, .mismatchPasscode:
             handleSetPasscode(fullPasscode)
