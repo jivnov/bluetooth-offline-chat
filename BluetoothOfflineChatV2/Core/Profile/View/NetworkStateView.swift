@@ -21,9 +21,9 @@ struct NetworkStateView: View {
             
             Toggle(option.title, isOn: $enabled)
                 .font(.subheadline)
-                .onChange(of: enabled) { value in
+                .onChange(of: enabled, { _, value in
                     AppNetworkMode.changeNetworkState(isOn: value)
-            }
+            })
             
         }
     }

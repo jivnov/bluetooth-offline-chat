@@ -44,7 +44,7 @@ struct PasscodeInputView: View {
                 .focused($isTextFieldFocused)
                 .frame(width: 0, height: 0)
         }
-        .onChange(of: shouldEmptyPasscode, { _, _ in
+        .onChange(of: shouldEmptyPasscode, {
             passcode = ""
         })
         .onAppear { isTextFieldFocused = true }

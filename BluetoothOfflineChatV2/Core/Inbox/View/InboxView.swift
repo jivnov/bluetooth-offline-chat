@@ -44,7 +44,7 @@ struct InboxView: View {
             .navigationTitle(viewModel.nabigationTitle(by: offlineModeEnabled))
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(PlainListStyle())
-            .onChange(of: selectedUser, perform: { newValue in
+            .onChange(of: selectedUser, { _, newValue in
                 showChat = newValue != nil
             })
             .navigationDestination(for: Message.self, destination: {message in

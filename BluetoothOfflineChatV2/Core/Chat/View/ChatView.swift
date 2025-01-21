@@ -34,7 +34,7 @@ struct ChatView: View {
                 .onAppear {
                     proxy.scrollTo(viewModel.messages.last?.id)
                 }
-                .onChange(of: viewModel.messages.count) { _ in
+                .onChange(of: viewModel.messages.count) {
                     proxy.scrollTo(viewModel.messages.last?.id)
                 }
                 
