@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import CommonCrypto
 
 struct ChatService {
     let chatPartner: User
@@ -17,13 +18,11 @@ struct ChatService {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
         
-        let currentUserRef = FirestoreConstans.MessagesCollection
-            .document(currentUid)
-            .collection(chatPartnerId).document()
+        let combinedChatId = ChatService.getCombinedChatId(with: currentUid, chatPartnerId)
         
-        let chatPartnerRef = FirestoreConstans.MessagesCollection
-            .document(chatPartnerId)
-            .collection(currentUid)
+        let messagesRef = FirestoreConstans.MessagesCollection
+            .document(combinedChatId)
+            .collection("messages").document()
         
         let recentCurrentUserRef = FirestoreConstans.MessagesCollection
             .document(currentUid)
@@ -35,7 +34,7 @@ struct ChatService {
             .collection("recent-messages")
             .document(currentUid)
         
-        let messageId = currentUserRef.documentID
+        let messageId = messagesRef.documentID
         
         let message = Message(
             messageId: messageId,
@@ -47,8 +46,7 @@ struct ChatService {
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
         
-        currentUserRef.setData(messageData)
-        chatPartnerRef.document(messageId).setData(messageData)
+        messagesRef.setData(messageData)
         
         recentCurrentUserRef.setData(messageData)
         recentPartnertUserRef.setData(messageData)
@@ -56,6 +54,24 @@ struct ChatService {
         if offlineModeEnabled {
             ChatConnectivity.shared.send(message: message.encodedToSendOffline, to: chatPartnerId)
         }
+    }
+    
+    static func getCombinedChatId(with args: String...) -> String {
+        var combinedString = ""
+        for id in args.sorted() {
+            combinedString += id
+        }
+
+        let data = combinedString.data(using: .utf8)!
+
+        var hash = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        _ = data.withUnsafeBytes {
+            CC_SHA256($0.baseAddress, CC_LONG(data.count), &hash)
+        }
+
+        let hexString = hash.map { String(format: "%02x", $0) }.joined()
+
+        return hexString
     }
     
     static func getOfflineMessage(from chatPartnerId: String?, messageData: [String : String]) {
@@ -72,12 +88,14 @@ struct ChatService {
         else {
             timestamp = Timestamp()
         }
-            
-        let currentUserRef = FirestoreConstans.MessagesCollection
-            .document(currentUid)
-            .collection(chatPartnerId).document(messageId)
+
+        let combinedChatId = getCombinedChatId(with: currentUid, chatPartnerId)
         
-        let messageDocId = currentUserRef.documentID
+        let messagesRef = FirestoreConstans.MessagesCollection
+            .document(combinedChatId)
+            .collection("messages").document(messageId)
+        
+        let messageDocId = messagesRef.documentID
         
         let message = Message(
             messageId: messageDocId,
@@ -86,10 +104,7 @@ struct ChatService {
             messageText: messageText,
             timestamp: timestamp
         )
-        
-        let chatPartnerRef = FirestoreConstans.MessagesCollection
-            .document(chatPartnerId)
-            .collection(currentUid)
+
         
         let recentCurrentUserRef = FirestoreConstans.MessagesCollection
             .document(currentUid)
@@ -104,8 +119,7 @@ struct ChatService {
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
 
-        currentUserRef.setData(messageData)
-        chatPartnerRef.document(messageId).setData(messageData)
+        messagesRef.setData(messageData)
         
         recentCurrentUserRef.setData(messageData)
         recentPartnertUserRef.setData(messageData)
@@ -115,9 +129,10 @@ struct ChatService {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
         
+        let combinedChatId = ChatService.getCombinedChatId(with: currentUid, chatPartnerId)
         let query = FirestoreConstans.MessagesCollection
-            .document(currentUid)
-            .collection(chatPartnerId)
+            .document(combinedChatId)
+            .collection("messages")
             .order(by: "timestamp", descending: false)
         
         query.addSnapshotListener {snapshot, _ in
