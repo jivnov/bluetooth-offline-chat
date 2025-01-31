@@ -26,7 +26,7 @@ struct ChatView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(viewModel.messages) { message in
-                            ChatMessageCell(message: message)
+                            ChatMessageCell(message: message, viewModel: viewModel)
                                 .id(message.id)
                         }
                     }

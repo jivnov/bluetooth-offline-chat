@@ -27,4 +27,8 @@ class ChatViewModel: ObservableObject {
     func sendMessage() {
         self.service.sendMessage(messageText)
     }
+    
+    func unsendMessage(with msgId: String) {
+
+    }
 }

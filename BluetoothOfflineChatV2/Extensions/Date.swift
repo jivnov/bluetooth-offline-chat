@@ -40,6 +40,10 @@ extension Date {
         }
     }
     
+    func timestampFullString() -> String {
+        return "\(dateString()) \(timeString())"
+    }
+    
     func timestampDateToString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "YY-MMM-d HH:mm:ss"

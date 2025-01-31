@@ -83,6 +83,26 @@
         }
       }
     },
+    "Confirm" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potwierdź"
+          }
+        }
+      }
+    },
+    "Confirm delete message" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potwierdź usunięcie wiadomości"
+          }
+        }
+      }
+    },
     "Contacts" : {
       "localizations" : {
         "en" : {
@@ -627,6 +647,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "System"
+          }
+        }
+      }
+    },
+    "This action cannot be undone" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tego działania nie można cofnąć"
           }
         }
       }

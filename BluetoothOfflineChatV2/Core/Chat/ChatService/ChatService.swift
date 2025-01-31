@@ -76,7 +76,6 @@ struct ChatService {
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
 
         messagesRef.setData(messageData)
-        
         recentRefs.forEach { $0.setData(messageData) }
     }
     
@@ -114,11 +113,11 @@ struct ChatService {
         recentRefs.forEach { $0.setData(updateUnread, merge: true) }
      }
     
-    func unsendMessage(idMessage: String, isLastMessage: Bool) {
+    func unsendMessage(with msgId: String, isLast: Bool) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
                 
-        let messagesRef = ChatService.getMessagesCollectionRef(for: currentUid, chatPartnerId).document(idMessage)
+        let messagesRef = ChatService.getMessagesCollectionRef(for: currentUid, chatPartnerId).document(msgId)
         let recentRefs = ChatService.getRecentRef(for: currentUid, chatPartnerId)
         
         let updateUnread: [String: Any] = [
@@ -128,7 +127,7 @@ struct ChatService {
         messagesRef.setData(updateUnread, merge: true)
 //        messagesRef.delete()
                
-        if isLastMessage {
+        if isLast {
             let query = ChatService.getMessagesCollectionRef(for: currentUid, chatPartnerId)
                 .order(by: "timestamp", descending: false)
                 .whereField("isUnsend", isEqualTo: "false")
