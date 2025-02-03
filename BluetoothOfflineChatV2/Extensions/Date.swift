@@ -8,28 +8,6 @@
 import Foundation
 
 extension Date {
-    private var timeFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateFormat = "HH:mm"
-        return formatter
-    }
-    
-    private var dayFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.dateFormat = "MM/dd/yy"
-        return formatter
-    }
-    
-    private func timeString() -> String {
-        return timeFormatter.string(from: self)
-    }
-    
-    private func dateString() -> String {
-        return dayFormatter.string(from: self)
-    }
-    
     func timestampString() -> String {
         if Calendar.current.isDateInToday(self) {
             return timeString()
@@ -46,13 +24,25 @@ extension Date {
     
     func timestampDateToString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YY-MMM-d HH:mm:ss"
+        formatter.dateFormat = encodingDateFormat()
         return formatter.string(from: self)
     }
     
     func timestampDate(from str: String) -> Date? {
         let formatter = DateFormatter()
-        formatter.dateFormat = "YY-MMM-d HH:mm:ss"
+        formatter.dateFormat = encodingDateFormat()
         return formatter.date(from: str)
+    }
+    
+    private func encodingDateFormat() -> String {
+        return "YY-MMM-d HH:mm:ss"
+    }
+    
+    private func timeString() -> String {
+        return DateFormatter.localizedString(from: self, dateStyle: .none, timeStyle: .short)
+    }
+    
+    private func dateString() -> String {
+        return DateFormatter.localizedString(from: self, dateStyle: .medium, timeStyle: .none)
     }
 }

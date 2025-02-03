@@ -109,7 +109,7 @@ extension ChatMessageCell {
                 menuItem(symbol: "document.on.document", text: "Copy")
             }
             
-            if isFromCurrentUser {
+            if isFromCurrentUser && !AppNetworkMode.offlineModeEnabled() {
                 Button {
                     showMsgDeleteAlert.toggle()
                 } label: {
