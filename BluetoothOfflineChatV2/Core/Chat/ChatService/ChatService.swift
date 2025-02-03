@@ -87,7 +87,9 @@ struct ChatService {
             .order(by: "timestamp", descending: false)
         
         query.addSnapshotListener {snapshot, _ in
-            guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }
+            guard let changes = snapshot?.documentChanges.filter({
+                [.added, .modified].contains($0.type)
+            }) else { return }
             var messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
             
             for (index, message) in messages.enumerated() where message.fromId != currentUid {
@@ -98,11 +100,11 @@ struct ChatService {
         }
     }
     
-    func updateUnreadMessage(idMessage: String){
+    func updateUnreadMessage(msgId: String){
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
         
-        let messagesRef = ChatService.getMessagesCollectionRef(for: currentUid, chatPartnerId).document(idMessage)
+        let messagesRef = ChatService.getMessagesCollectionRef(for: currentUid, chatPartnerId).document(msgId)
         let recentRefs = ChatService.getRecentRef(for: currentUid, chatPartnerId)
         
         let updateUnread: [String: Any] = [
@@ -125,12 +127,11 @@ struct ChatService {
         ]
         
         messagesRef.setData(updateUnread, merge: true)
-//        messagesRef.delete()
                
         if isLast {
             let query = ChatService.getMessagesCollectionRef(for: currentUid, chatPartnerId)
-                .order(by: "timestamp", descending: false)
-                .whereField("isUnsend", isEqualTo: "false")
+                .whereField("isUnsend", isEqualTo: false)
+                .order(by: "timestamp", descending: true)
                 .limit(to: 1)
             Task {
                 let msg = try await query.getDocuments()

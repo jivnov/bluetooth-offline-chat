@@ -20,7 +20,19 @@ class ChatViewModel: ObservableObject {
     
     func observeMessages() {
         self.service.observeMessages() { messages in
-            self.messages.append(contentsOf: messages)
+            if self.messages.isEmpty {
+                self.messages.append(contentsOf: messages)
+            } else {
+                for newMessage in messages {
+                    if let idx = self.messages.firstIndex(where: { $0.messageId == newMessage.messageId }) {
+                        self.messages[idx] = newMessage
+                    } else {
+                        self.messages.append(newMessage)
+                    }
+                }
+            }
+            
+            self.messages = self.messages.filter( { $0.isUnsend == false } )
         }
     }
     
@@ -29,6 +41,6 @@ class ChatViewModel: ObservableObject {
     }
     
     func unsendMessage(with msgId: String) {
-
+         self.service.unsendMessage(with: msgId, isLast: messages.last?.messageId == msgId)
     }
 }
